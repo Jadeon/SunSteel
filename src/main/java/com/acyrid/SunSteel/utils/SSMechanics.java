@@ -1,17 +1,15 @@
 package com.acyrid.SunSteel.utils;
 
 
+import com.acyrid.SunSteel.SunSteel;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
-/**
- * Created by IntelliJ IDEA.
- * User: JD
- * Date: 3/14/12
- * Time: 1:47 PM
- * To change this template use File | Settings | File Templates.
- */
 public class SSMechanics {
+
+    public static SunSteel plugin;
+
+    public SSMechanics(SunSteel plugin){
+    }
     public static boolean hasSSArmor(Player player){
         return (hasSSChest(player) && SSPermissions.allowedChest(player))
                 && (hasSSLegs(player) && SSPermissions.allowedPants(player))
@@ -19,41 +17,45 @@ public class SSMechanics {
                 && (hasSSBoots(player)&& SSPermissions.allowedBoots(player));
     }
     public static boolean hasSSHelm(Player player){
-        return player.getInventory().getHelmet().getTypeId() == SSConfig.helmId;
+        return player.getInventory().getHelmet().getTypeId() == plugin.getConfig().getInt(SSConfig.helmId);
     }
 
     public static boolean hasSSChest(Player player){
-        return player.getInventory().getChestplate().getTypeId() == SSConfig.chestId;
+        return player.getInventory().getChestplate().getTypeId() == plugin.getConfig().getInt(SSConfig.chestId);
     }
 
     public static boolean hasSSLegs(Player player){
-        return player.getInventory().getLeggings().getTypeId() == SSConfig.legsId;
+        return player.getInventory().getLeggings().getTypeId() == plugin.getConfig().getInt(SSConfig.legsId);
     }
 
     public static boolean hasSSBoots(Player player){
-        return player.getInventory().getBoots().getTypeId() == SSConfig.bootsId;
+        return player.getInventory().getBoots().getTypeId() == plugin.getConfig().getInt(SSConfig.bootsId);
     }
 
     public static boolean hasSSSword(Player player){
-        return player.getInventory().getItemInHand().getTypeId() == SSConfig.swordId;
+        return player.getInventory().getItemInHand().getTypeId() == plugin.getConfig().getInt(SSConfig.swordId);
     }
 
     public static boolean hasSSAxe(Player player){
-        return player.getInventory().getItemInHand().getTypeId() == SSConfig.axeId;
+        return player.getInventory().getItemInHand().getTypeId() == plugin.getConfig().getInt(SSConfig.axeId);
     }
     public static boolean hasSSPick(Player player){
-        return player.getInventory().getItemInHand().getTypeId() == SSConfig.pickId;
+        return player.getInventory().getItemInHand().getTypeId() == plugin.getConfig().getInt(SSConfig.pickId);
     }
     public static boolean hasSSShovel(Player player){
-        return player.getInventory().getItemInHand().getTypeId() == SSConfig.shovelId;
+        return player.getInventory().getItemInHand().getTypeId() == plugin.getConfig().getInt(SSConfig.shovelId);
     }
 
     public static boolean hasSSWeapon(Player player){
         return (hasSSSword(player) && SSPermissions.allowedSword(player))|| (hasSSAxe(player) && SSPermissions.allowedAxe(player));
     }
     
-    public static boolean hasSSHover(Player player){
-        return (hasSSBoots(player) && SSPermissions.allowedBoots(player) && SSPermissions.allowedHover(player));
+    public static boolean hasSSHoverLava(Player player){
+        return (hasSSBoots(player) && SSPermissions.allowedBoots(player) && SSPermissions.allowedLavaHover(player));
+    }
+
+    public static boolean hasSSHoverWater(Player player){
+        return (hasSSBoots(player) && SSPermissions.allowedBoots(player) && SSPermissions.allowedWaterHover(player));
     }
     
     public static int getHeldItem(Player player){
@@ -65,7 +67,7 @@ public class SSMechanics {
     }
 
     public static int getHitChance(){
-        return SSConfig.hitChance;
+        return plugin.getConfig().getInt(SSConfig.hitChance);
     }
     public static boolean smeltChance() {
         double luck =  Math.random()*100;
@@ -73,29 +75,11 @@ public class SSMechanics {
     }
 
     public static int getSmeltChance(){
-        return SSConfig.smeltChance;
+        return plugin.getConfig().getInt(SSConfig.smeltChance);
     }
     public static int getFireTicks(){
-        return SSConfig.fireDuration;
+        return plugin.getConfig().getInt(SSConfig.fireDuration);
     }
     
-    public static boolean getFireRiposte(){
-        return SSConfig.fireRiposte;
-    }
-    
-    public static boolean getFireResist(){
-        return SSConfig.fireResist;
-    }
 
-    public static boolean getFireBreather(){
-        return SSConfig.fireBreather;
-    }
-
-    public static boolean getLavaWalker(){
-        return SSConfig.lavaWalker;
-    }
-
-    public static boolean getWaterWalker(){
-        return SSConfig.waterWalker;
-    }
 }
