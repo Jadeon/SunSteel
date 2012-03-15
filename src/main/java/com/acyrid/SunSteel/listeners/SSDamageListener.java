@@ -54,7 +54,7 @@ public class SSDamageListener implements Listener {
             if(aggressor instanceof Player) {
                 Player player = (Player) aggressor;
                 if (SSMechanics.hasSSWeapon(player) && SSMechanics.hitChance()){
-                    event.getEntity().setFireTicks(SSMechanics.getFireTicks());
+                    event.getEntity().setFireTicks(SSMechanics.fireTicks());
                 }
                 if(event.getEntity() instanceof Animals)
                 {
@@ -65,7 +65,7 @@ public class SSDamageListener implements Listener {
             if(event.getEntity() instanceof Player) {
                 Player player = (Player) event.getEntity();
                 if (SSMechanics.hasSSArmor(player) && SSMechanics.hitChance()) {
-                    aggressor.setFireTicks(SSMechanics.getFireTicks());
+                    aggressor.setFireTicks(SSMechanics.riposteTicks());
                 }
             }
         }
