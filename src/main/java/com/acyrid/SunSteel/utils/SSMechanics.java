@@ -8,7 +8,8 @@ public class SSMechanics {
 
     public static SunSteel plugin;
 
-    public SSMechanics(SunSteel plugin){
+    public static void init(SunSteel plugin) {
+        SSMechanics.plugin = plugin;
     }
     public static boolean hasSSArmor(Player player){
         return (hasSSChest(player) && SSPermissions.allowedChest(player))
