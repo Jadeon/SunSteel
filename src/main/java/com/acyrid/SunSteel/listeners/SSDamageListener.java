@@ -9,6 +9,7 @@ import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByBlockEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
@@ -85,18 +86,18 @@ public class SSDamageListener implements Listener {
             }                
         }
         //Allows player water-breathing effect if wearing configuration based chestplate
-        if(event.getEntity() instanceof Player) {
-            Player player = (Player) event.getEntity();
-            if(SSMechanics.hasSSChest(player) && SSPermissions.allowedChest(player)) {
-                if(event.getCause().equals(event.getCause().DROWNING)) {
-                        player.setRemainingAir(10);
-                        player.setMaximumAir(10);
-                        event.setCancelled(true);
+        if(event instanceof EntityDamageByBlockEvent) {
+            if(event.getEntity() instanceof Player) {
+                Player player = (Player) event.getEntity();
+                if(event.getCause().equals(event.getCause().DROWNING)&&(SSMechanics.hasSSWaterBreath(player))){
+                            player.setRemainingAir(10);
+                            player.setMaximumAir(10);
+                            event.setCancelled(true);
                 }
-
             }
         }
     }
+
 
     public static boolean cookedMeat(Animals animals) {
         if(cookedAnimals.contains(animals)) {
@@ -104,6 +105,7 @@ public class SSDamageListener implements Listener {
             return true;
         } else return false;
     }
+
     public static void burnAnimal(Animals animals) {
         if(!cookedAnimals.contains(animals)) cookedAnimals.add(animals);
     }
