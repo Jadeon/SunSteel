@@ -54,6 +54,12 @@ public class SSMechanics {
     public static boolean hasSSHoverLava(Player player){
         return (hasSSBoots(player) && SSPermissions.allowedBoots(player) && SSPermissions.allowedLavaHover(player));
     }
+    public static boolean hasSSLavaBreath(Player player){
+        return (hasSSChest(player) && SSPermissions.allowedChest(player) && SSPermissions.allowedLavaBreath(player));
+    }
+    public static boolean hasSSWaterBreath(Player player){
+        return (hasSSChest(player) && SSPermissions.allowedChest(player) && SSPermissions.allowedWaterBreath(player));
+    }
 
     public static boolean hasSSHoverWater(Player player){
         return (hasSSBoots(player) && SSPermissions.allowedBoots(player) && SSPermissions.allowedWaterHover(player));
@@ -80,16 +86,14 @@ public class SSMechanics {
     }
 
     public static int fireTicks(){
-        int convert = 20;
         return (getFireTicks()*20);
     }
-    
+
     public static int getFireTicks(){
         return plugin.getConfig().getInt(SSConfig.fireDuration);
     }
 
     public static int riposteTicks(){
-        int convert = 20;
         return (getRiposteTicks()*20);
     }
     public static int getRiposteTicks(){
