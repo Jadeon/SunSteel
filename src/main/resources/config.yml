@@ -1,0 +1,33 @@
+#congif.yml
+
+####################################################################
+#list of item id's for respective items and their resulting effects#
+#  - helm|chest|legs|boots can only only contain armor item id's   #
+#  - sword|shovel|pick|axe can contain any item id as they are     #
+#    considered when they are in your hand                         #
+####################################################################
+item_ids:
+    sword: 283
+    shovel: 284
+    pick: 285
+    axe: 286
+    helm: 314
+    chest: 315
+    legs: 316
+    boots: 317
+
+
+############################################################
+# Enter a value in seconds that you would like the burning #
+# effect to last.                                          #
+############################################################
+tick_durations:
+    fireDuration: 2;
+    riposteDuration: 2;
+#############################################
+# These control the likelihood of a "proc"  #
+# occurring on a successful hit/break event #
+#############################################
+success_chances:
+    hit: 100;
+    smelt: 100;
