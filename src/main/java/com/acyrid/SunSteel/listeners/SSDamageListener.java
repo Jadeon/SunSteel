@@ -64,7 +64,7 @@ public class SSDamageListener implements Listener {
             //Allows player fire riposte if using configuration based full set of armor
             if(event.getEntity() instanceof Player) {
                 Player player = (Player) event.getEntity();
-                if (SSMechanics.hasSSArmor(player) && SSMechanics.getFireRiposte() && SSMechanics.hitChance()) {
+                if (SSMechanics.hasSSArmor(player) && SSMechanics.hitChance()) {
                     aggressor.setFireTicks(SSMechanics.getFireTicks());
                 }
             }
@@ -78,7 +78,7 @@ public class SSDamageListener implements Listener {
             //Allows player fire resistance effect if wearing configuration based full set of armor
             if(event.getEntity() instanceof Player) {
                 Player player = (Player) event.getEntity();
-                if (SSMechanics.hasSSArmor(player) && SSMechanics.getFireResist() && SSMechanics.hitChance()) {
+                if (SSMechanics.hasSSArmor(player) && SSMechanics.hitChance()) {
                     event.setCancelled(true);
                     player.setFireTicks(0);
                 }
@@ -87,7 +87,7 @@ public class SSDamageListener implements Listener {
         //Allows player water-breathing effect if wearing configuration based chestplate
         if(event.getEntity() instanceof Player) {
             Player player = (Player) event.getEntity();
-            if(SSMechanics.hasSSChest(player) && SSPermissions.allowedChest(player) && SSMechanics.getFireBreather()) {
+            if(SSMechanics.hasSSChest(player) && SSPermissions.allowedChest(player)) {
                 if(event.getCause().equals(event.getCause().DROWNING)) {
                         player.setRemainingAir(10);
                         player.setMaximumAir(10);
