@@ -5,15 +5,10 @@ import com.acyrid.SunSteel.utils.SSMechanics;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.event.Listener;
-
-
 import java.io.File;
 
 public class SunSteel extends JavaPlugin{
-    //Permission Handler
-    //private SSPermissions ph;
-    //Listeners
+
     private SSPlayerListener playerListener = new SSPlayerListener(this);
     private SSDamageListener damageListener = new SSDamageListener(this);
     private SSBlockListener blockListener = new SSBlockListener(this);
@@ -29,7 +24,7 @@ public class SunSteel extends JavaPlugin{
         if(!this.configFile.exists()){
             saveDefaultConfig();
         }
-        this.config = getConfig();
+        getConfig().options().copyDefaults(true);
         this.registerEvents();
         SSMechanics.init(this);
         System.out.println("[" + getName() + "] enabled!");
