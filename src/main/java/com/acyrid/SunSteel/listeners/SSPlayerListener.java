@@ -18,10 +18,10 @@ public class SSPlayerListener implements Listener{
     public void onPlayerMove(PlayerMoveEvent event){
         Player player = event.getPlayer();    
         Block blockLoc = player.getLocation().getBlock();
-        if((SSMechanics.hasSSBoots(player))&&(SSMechanics.hasSSHover(player)))
+        if((SSMechanics.hasSSBoots(player)))
         {
-                if(((blockLoc.getType() == Material.WATER || blockLoc.getType() == Material.STATIONARY_WATER) && SSMechanics.getWaterWalker()) 
-                        ||((blockLoc.getType() == Material.LAVA) || blockLoc.getType() == Material.STATIONARY_LAVA) && SSMechanics.getLavaWalker()){
+                if(((blockLoc.getType() == Material.WATER || blockLoc.getType() == Material.STATIONARY_WATER)&&(SSMechanics.hasSSHoverWater(player)))
+                        ||((blockLoc.getType() == Material.LAVA) || blockLoc.getType() == Material.STATIONARY_LAVA)&&(SSMechanics.hasSSHoverLava(player))){
                     event.getTo().setY(event.getFrom().getY());
 
                 }
