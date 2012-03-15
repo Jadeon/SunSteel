@@ -7,24 +7,19 @@ import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;
 
 public class SSPermissions{
-    private static final String armorPerm = "sunsteel.armor";
+
     private static final String chestPerm = "sunsteel.armor.chest";
     private static final String bootsPerm = "sunsteel.armor.boots";
     private static final String helmsPerm = "sunsteel.armor.helmet";
     private static final String pantsPerm = "sunsteel.armor.legs";
-    private static final String hoverPerm = "sunsteel.armor.boots.float";
-    private static final String toolsPerm = "sunsteel.tools";
+    private static final String hoverLavaPerm = "sunsteel.armor.boots.lavafloat";
+    private static final String hoverWaterPerm = "sunsteel.armor.boots.Waterfloat";
     private static final String swordPerm = "sunsteel.tools.sword";
     private static final String axePerm = "sunsteel.tools.axe";
     private static final String pickPerm = "sunsteel.tools.pick";
     private static final String shovelPerm = "sunsteel.tools.shovel";
     private static final String adminPerm = "sunsteel.admins";
 
-
-    //Armor Parent Perm
-    public static boolean allowedArmor(Player player){
-        return player.hasPermission(armorPerm);
-    }
     //Armor Child Perm: Chest
     public static boolean allowedChest(Player player){
         return player.hasPermission(chestPerm);
@@ -42,14 +37,14 @@ public class SSPermissions{
         return player.hasPermission(bootsPerm);
     }
     //Armor.Boots Child Perm: Hover
-    public static boolean allowedHover(Player player){
-        return player.hasPermission(hoverPerm);
+    public static boolean allowedLavaHover(Player player){
+        return player.hasPermission(hoverLavaPerm);
     }
 
-    public static boolean allowedTools(Player player){
-        return player.hasPermission(toolsPerm);
+    public static boolean allowedWaterHover(Player player){
+        return player.hasPermission(hoverWaterPerm);
     }
-    
+
     public static boolean allowedSword(Player player){
         return player.hasPermission(swordPerm);
     }
