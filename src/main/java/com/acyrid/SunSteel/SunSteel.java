@@ -1,6 +1,7 @@
 package com.acyrid.SunSteel;
 
 import com.acyrid.SunSteel.listeners.*;
+import com.acyrid.SunSteel.utils.SSMechanics;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -30,8 +31,7 @@ public class SunSteel extends JavaPlugin{
         }
         this.config = getConfig();
         this.registerEvents();
-
-
+        SSMechanics.init(this);
         System.out.println("[" + getName() + "] enabled!");
     }
 
