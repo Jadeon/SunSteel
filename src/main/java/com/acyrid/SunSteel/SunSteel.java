@@ -27,7 +27,7 @@ public class SunSteel extends JavaPlugin{
     }                                                    
     public void onEnable(){
         if(!this.configFile.exists()){
-            saveConfig();
+            saveDefaultConfig();
         }
         this.config = getConfig();
         this.registerEvents();
