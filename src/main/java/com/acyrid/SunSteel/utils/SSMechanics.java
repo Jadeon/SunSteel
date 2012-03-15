@@ -77,8 +77,22 @@ public class SSMechanics {
     public static int getSmeltChance(){
         return plugin.getConfig().getInt(SSConfig.smeltChance);
     }
+
+    public static int fireTicks(){
+        int convert = 20;
+        return (getFireTicks()*20);
+    }
+    
     public static int getFireTicks(){
         return plugin.getConfig().getInt(SSConfig.fireDuration);
+    }
+
+    public static int riposteTicks(){
+        int convert = 20;
+        return (getRiposteTicks()*20);
+    }
+    public static int getRiposteTicks(){
+        return plugin.getConfig().getInt(SSConfig.riposteDuration);
     }
     
 
