@@ -3,17 +3,17 @@ main: com.acyrid.SunSteel.SunSteel
 authors: ['Jadeon']
 version: 1.0
 permissions:
-    sunsteel.*
+    sunsteel.*:
         description: Gives access to all sunsteel effects
         children:
             sunsteel.armor: true
             sunsteel.tools: true
-        sunsteel.armor:
-            description:
-            default: true
-        sunsteel.tools:
-            description:
-            default: true
+    sunsteel.armor:
+        description:
+        default: true
+    sunsteel.tools:
+        description:
+        default: true
     sunsteel.armor.*:
         description: Gives access to all sunsteel armor effects
         children:
@@ -33,36 +33,36 @@ permissions:
     sunsteel.armor.boots:
         description: Allows usage of the boots effects Flame Riposte(Requires Full Set), Fire Resistance(Requires Full Set)
         default: true
-    sunsteel.armor.boots.*
+    sunsteel.armor.boots.*:
         description: Gives access to all sunsteel boots effects
         children:
             sunsteel.armor.boots.lavafloat: true
             sunsteel.armor.boots.waterfloat: true
-        sunsteel.armor.boots.lavafloat:
-            description: Allows usage of the boots effect Lava Walking
-            default: true
-        sunsteel.armor.boots.waterfloat:
+    sunsteel.armor.boots.lavafloat:
+        description: Allows usage of the boots effect Lava Walking
+        default: true
+    sunsteel.armor.boots.waterfloat:
             description: Allows usage of the boots effect Water Walking
             default: true
-    sunsteel.tools.*
+    sunsteel.tools.*:
         description: Gives access to all sunsteel tool effects
         children:
            sunsteel.tools.sword: true
            sunsteel.tools.axe: true
            sunsteel.tools.pick: true
            sunsteel.tools.shovel: true
-        sunsteel.tools.sword
-            description: Allows usage of the sword effect Sword of Flames
-            default: true
-        sunsteel.tools.axe
-            description: Allows usage of the axe effect Inferno Axe
-            default: true
-        sunsteel.tools.pick
-            description: Allows usage of the pick effect Molten Pick
-            default: true
-        sunsteel.tools.shovel
-            description: Allows usage of the shovel effect Solar Spade
-            default: true
+    sunsteel.tools.sword:
+        description: Allows usage of the sword effect Sword of Flames
+        default: true
+    sunsteel.tools.axe:
+        description: Allows usage of the axe effect Inferno Axe
+        default: true
+    sunsteel.tools.pick:
+        description: Allows usage of the pick effect Molten Pick
+        default: true
+    sunsteel.tools.shovel:
+        description: Allows usage of the shovel effect Solar Spade
+        default: true
 
 
 
