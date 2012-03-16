@@ -1,7 +1,7 @@
 name: SunSteel
 main: com.acyrid.SunSteel.SunSteel
 authors: ['Jadeon']
-version: 1.0
+version: 1.01
 permissions:
     sunsteel.*:
         description: Gives access to all sunsteel effects

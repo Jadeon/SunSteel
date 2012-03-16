@@ -52,6 +52,7 @@ public class SSMechanics {
 
     public static boolean hasSSBoots(Player player){
         ItemStack item = player.getInventory().getBoots();
+        System.out.println(plugin.getConfig().getKeys(true));
         System.out.println("SSMechancis Line:54 getBoots(): "+item);
         System.out.println("Boots ID: "+item.getTypeId());
         System.out.println("Config Boots ID: "+plugin.getConfig().getInt(SSConfig.chestId));
@@ -75,6 +76,9 @@ public class SSMechanics {
         }
 
     public static boolean hasSSPick(Player player){
+        System.out.println(plugin.getConfig().getKeys(true));
+        System.out.println(plugin.getConfig().get(SSConfig.pickId));
+        System.out.println(SSConfig.pickId);
         System.out.println("SSMechancis Line:77 getItemInHand(): "+player.getInventory().getItemInHand());
         System.out.println("ItemInHand ID: "+getHeldItem(player));
         System.out.println("Config Pick ID: "+plugin.getConfig().getInt(SSConfig.pickId));

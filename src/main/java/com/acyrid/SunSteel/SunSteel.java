@@ -14,17 +14,14 @@ public class SunSteel extends JavaPlugin{
     private SSBlockListener blockListener = new SSBlockListener(this);
     private SSEntityListener entityListener = new SSEntityListener(this);
 
-    File configFile = new File(this.getDataFolder(), "config.yml");
-    FileConfiguration config;
-    
     public void onDisable(){
         System.out.println("["+getName()+"] disabled..");
     }                                                    
     public void onEnable(){
-        if(!this.configFile.exists()){
+        if(!new File(this.getDataFolder(), "config.yml").exists()){
             saveDefaultConfig();
         }
-        getConfig().options().copyDefaults(true);
+        getConfig();
         this.registerEvents();
         SSMechanics.init(this);
         System.out.println("[" + getName() + "] enabled!");
