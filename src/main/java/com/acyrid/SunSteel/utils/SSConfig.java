@@ -13,6 +13,6 @@ public class SSConfig {
     public static final String shovelId = "items_ids.shovel";
     public static final String hitChance = "success_chances.hit";
     public static final String smeltChance = "success_chances.smelt";
-
+    public static final String debugMode = "debug_mode.option";
 
 }

@@ -100,12 +100,10 @@ public class SSDamageListener implements Listener {
 
 
     public static boolean cookedMeat(Animals animals) {
-        if(cookedAnimals != null){
-            if(cookedAnimals.contains(animals)) {
-                cookedAnimals.remove(animals);
-                return true;
-            } else return false;
-        }else return false;
+        if(cookedAnimals.contains(animals)) {
+            cookedAnimals.remove(animals);
+            return true;
+        } else return false;
     }
 
     public static void burnAnimal(Animals animals) {

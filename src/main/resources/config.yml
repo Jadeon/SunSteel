@@ -31,3 +31,6 @@ tick_durations:
 success_chances:
     hit: 100
     smelt: 100
+
+debug_mode:
+    option: true

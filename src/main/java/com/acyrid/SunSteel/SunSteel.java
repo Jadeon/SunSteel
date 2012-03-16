@@ -14,7 +14,7 @@ public class SunSteel extends JavaPlugin{
     private SSBlockListener blockListener = new SSBlockListener(this);
     private SSEntityListener entityListener = new SSEntityListener(this);
 
-    File configFile = new File("plugins/SunSteel/config.yml");
+    File configFile = new File(this.getDataFolder(), "config.yml");
     FileConfiguration config;
     
     public void onDisable(){

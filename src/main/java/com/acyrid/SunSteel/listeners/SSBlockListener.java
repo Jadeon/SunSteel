@@ -24,13 +24,13 @@ public class SSBlockListener implements Listener {
          smeltBlock(event, 1);
         }else if ((event.getBlock().getType() == Material.SAND) && SSMechanics.hasSSShovel(player) && SSPermissions.allowedPick(player) && SSMechanics.smeltChance()){
             smeltBlock(event, 20);
-        }else if ((event.getBlock().getType() == Material.LOG) && SSMechanics.hasSSAxe(player) && SSPermissions.allowedPick(player) && SSMechanics.smeltChance()){
+        }else if ((event.getBlock().getType() == Material.LOG) && SSMechanics.hasSSAxe(player) && SSPermissions.allowedAxe(player) && SSMechanics.smeltChance()){
             smeltBlock(event, 263);
         }else if ((event.getBlock().getType() == Material.IRON_ORE) && SSMechanics.hasSSPick(player) && SSPermissions.allowedPick(player) && SSMechanics.smeltChance()){
             smeltBlock(event, 265);
         }else if ((event.getBlock().getType() == Material.GOLD_ORE) && SSMechanics.hasSSPick(player) && SSPermissions.allowedPick(player) && SSMechanics.smeltChance()){
             smeltBlock(event, 266);
-        }else if ((event.getBlock().getType() == Material.CLAY) && SSMechanics.hasSSShovel(player) && SSPermissions.allowedPick(player) && SSMechanics.smeltChance()){
+        }else if ((event.getBlock().getType() == Material.CLAY) && SSMechanics.hasSSShovel(player) && SSPermissions.allowedShovel(player) && SSMechanics.smeltChance()){
             smeltBlock(event, 336);
         }
     }
