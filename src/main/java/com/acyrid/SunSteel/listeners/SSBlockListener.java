@@ -18,7 +18,19 @@ public class SSBlockListener implements Listener {
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event){
         Player player = event.getPlayer();
-
+        if(SSMechanics.getDebugMode()){
+            System.out.println("[SUNSTEEL-DEBUG] ----------------------------------------------------------------------------------------------------------------------------\n");
+            System.out.println("[SUNSTEEL-DEBUG] Block Break Event on:" + event.getBlock().getType()+"\n");
+            System.out.println("[SUNSTEEL-DEBUG] Block Break Event by:" + event.getPlayer() +"\n");
+            System.out.println("[SUNSTEEL-DEBUG] " + event.getPlayer().getName() + "'s allowedPick is:"+SSPermissions.allowedPick(player)+"\n");
+            System.out.println("[SUNSTEEL-DEBUG] " + event.getPlayer().getName() + "'s allowedAxe is:"+SSPermissions.allowedPick(player)+"\n");
+            System.out.println("[SUNSTEEL-DEBUG] " + event.getPlayer().getName() + "'s allowedPick is:"+SSPermissions.allowedShovel(player)+"\n");
+            System.out.println("[SUNSTEEL-DEBUG] " + event.getPlayer().getName() + "'s hasSSShovel is:"+SSMechanics.hasSSShovel(player)+"\n");
+            System.out.println("[SUNSTEEL-DEBUG] " + event.getPlayer().getName() + "'s hasSSAxe is:"+SSMechanics.hasSSAxe(player)+"\n");
+            System.out.println("[SUNSTEEL-DEBUG] " + event.getPlayer().getName() + "'s hasSSPick is:"+SSMechanics.hasSSPick(player)+"\n");
+            System.out.println("[SUNSTEEL-DEBUG] " + event.getPlayer().getName() + "'s smeltChance is:"+SSMechanics.smeltChance()+"\n");
+            System.out.println("[SUNSTEEL-DEBUG] ----------------------------------------------------------------------------------------------------------------------------\n");
+        }
         if ((event.getBlock().getType() == Material.STONE || event.getBlock().getType() == Material.COBBLESTONE) && SSMechanics.hasSSPick(player) && SSPermissions.allowedPick(player) && SSMechanics.smeltChance())
         {
          smeltBlock(event, 1);

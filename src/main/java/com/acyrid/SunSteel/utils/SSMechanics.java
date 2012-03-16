@@ -20,76 +20,42 @@ public class SSMechanics {
                 && (hasSSBoots(player)&& SSPermissions.allowedBoots(player));
     }
     public static boolean hasSSHelm(Player player){
-        if(SSMechanics.getDebugMode()){
-            System.out.println("[SUNSTEEL-DEBUG] Checking does Player pass check [hasSSHelm:]: "+player.getInventory().getHelmet() != null
-                    && player.getInventory().getHelmet().getTypeId() == plugin.getConfig().getInt(SSConfig.helmId));
-        }
-        return player.getInventory().getHelmet() != null
-                && player.getInventory().getHelmet().getTypeId() == plugin.getConfig().getInt(SSConfig.helmId);
-
+        if (player.getInventory().getHelmet() != null){
+            return player.getInventory().getHelmet().getTypeId() == plugin.getConfig().getInt(SSConfig.helmId);
+        }else{return false;}
     }
 
     public static boolean hasSSChest(Player player){
-        if(SSMechanics.getDebugMode()){
-            System.out.println("[SUNSTEEL-DEBUG] Checking does Player pass check [hasSSChest]: "+player.getInventory().getChestplate() != null
-                && player.getInventory().getChestplate().getTypeId() == plugin.getConfig().getInt(SSConfig.chestId));
-        }
-        return player.getInventory().getChestplate() != null
-                && player.getInventory().getChestplate().getTypeId() == plugin.getConfig().getInt(SSConfig.chestId);
-
+        if (player.getInventory().getChestplate() != null){
+            return player.getInventory().getChestplate().getTypeId() == plugin.getConfig().getInt(SSConfig.chestId);
+        }else{return false;}
     }
 
     public static boolean hasSSLegs(Player player){
-        if(SSMechanics.getDebugMode()){
-            System.out.println("[SUNSTEEL-DEBUG] Checking does Player pass check [hasSSLegs]: "+player.getInventory().getChestplate() != null
-                && player.getInventory().getChestplate().getTypeId() == plugin.getConfig().getInt(SSConfig.chestId));
-        }
-        return player.getInventory().getLeggings() != null
-                && player.getInventory().getLeggings().getTypeId() == plugin.getConfig().getInt(SSConfig.legsId);
-
+        if (player.getInventory().getLeggings() != null){
+            return player.getInventory().getLeggings().getTypeId() == plugin.getConfig().getInt(SSConfig.legsId);
+        }else{return false;}
     }
 
     public static boolean hasSSBoots(Player player){
-        if(SSMechanics.getDebugMode()){
-            System.out.println("[SUNSTEEL-DEBUG] Checking does Player pass check [hasSSBoots]: "+player.getInventory().getChestplate() != null
-                && player.getInventory().getChestplate().getTypeId() == plugin.getConfig().getInt(SSConfig.chestId));
-        }
-        return player.getInventory().getBoots() != null
-                && player.getInventory().getBoots().getTypeId() == plugin.getConfig().getInt(SSConfig.bootsId);
+        if (player.getInventory().getBoots() != null){
+            return player.getInventory().getBoots().getTypeId() == plugin.getConfig().getInt(SSConfig.bootsId);
+        }else{return false;}
     }
 
     public static boolean hasSSSword(Player player){
-        if(SSMechanics.getDebugMode()){
-            System.out.println("[SUNSTEEL-DEBUG] Checking does Player pass check [hasSSSword]: "+player.getInventory().getChestplate() != null
-                && player.getInventory().getChestplate().getTypeId() == plugin.getConfig().getInt(SSConfig.chestId));
-        }
-        return player.getInventory().getItemInHand() != null
-                && player.getInventory().getItemInHand().getTypeId() == plugin.getConfig().getInt(SSConfig.swordId);
+        return getHeldItem(player) == plugin.getConfig().getInt(SSConfig.swordId);
     }
 
     public static boolean hasSSAxe(Player player){
-        if(SSMechanics.getDebugMode()){
-            System.out.println("[SUNSTEEL-DEBUG] Checking does Player pass check [hasSSAxe]: "+player.getInventory().getChestplate() != null
-                && player.getInventory().getChestplate().getTypeId() == plugin.getConfig().getInt(SSConfig.chestId));
+        return getHeldItem(player) == plugin.getConfig().getInt(SSConfig.axeId);
         }
-        return player.getInventory().getItemInHand() != null
-                && player.getInventory().getItemInHand().getTypeId() == plugin.getConfig().getInt(SSConfig.axeId);
-    }
+
     public static boolean hasSSPick(Player player){
-        if(SSMechanics.getDebugMode()){
-            System.out.println("[SUNSTEEL-DEBUG] Checking does Player pass check [hasSSPick]: "+player.getInventory().getChestplate() != null
-                && player.getInventory().getChestplate().getTypeId() == plugin.getConfig().getInt(SSConfig.chestId));
-        }
-        return player.getInventory().getItemInHand() != null
-                && player.getInventory().getItemInHand().getTypeId() == plugin.getConfig().getInt(SSConfig.pickId);
+        return getHeldItem(player) == plugin.getConfig().getInt(SSConfig.pickId);
     }
     public static boolean hasSSShovel(Player player){
-        if(SSMechanics.getDebugMode()){
-            System.out.println("[SUNSTEEL-DEBUG] Checking does Player pass check [hasSSShovel]: "+player.getInventory().getChestplate() != null
-                && player.getInventory().getChestplate().getTypeId() == plugin.getConfig().getInt(SSConfig.chestId));
-        }
-        return player.getInventory().getItemInHand() != null
-                && player.getInventory().getItemInHand().getTypeId() == plugin.getConfig().getInt(SSConfig.shovelId);
+        return getHeldItem(player) == plugin.getConfig().getInt(SSConfig.shovelId);
     }
 
     public static boolean hasSSWeapon(Player player){
@@ -115,7 +81,9 @@ public class SSMechanics {
     }
     
     public static int getHeldItem(Player player){
-        return player.getInventory().getItemInHand().getTypeId();
+        if (player.getInventory().getItemInHand() != null){
+            return player.getInventory().getItemInHand().getTypeId();
+        }else{return 0;}
     }
     public static boolean hitChance() {
         double luck =  Math.random()*100;

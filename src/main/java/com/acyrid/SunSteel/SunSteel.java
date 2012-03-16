@@ -28,6 +28,9 @@ public class SunSteel extends JavaPlugin{
         this.registerEvents();
         SSMechanics.init(this);
         System.out.println("[" + getName() + "] enabled!");
+        if(SSMechanics.getDebugMode()){
+            System.out.println("[" + getName() + "] --------DEBUG MODE IS ENABLED-------- ");
+        }
     }
 
     private void registerEvents() {
