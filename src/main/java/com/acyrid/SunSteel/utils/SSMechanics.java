@@ -3,6 +3,7 @@ package com.acyrid.SunSteel.utils;
 
 import com.acyrid.SunSteel.SunSteel;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 
 public class SSMechanics {
@@ -20,25 +21,29 @@ public class SSMechanics {
                 && (hasSSBoots(player)&& SSPermissions.allowedBoots(player));
     }
     public static boolean hasSSHelm(Player player){
-        if (player.getInventory().getHelmet() != null){
+        ItemStack item = player.getInventory().getHelmet();
+        if (item != null){
             return player.getInventory().getHelmet().getTypeId() == plugin.getConfig().getInt(SSConfig.helmId);
         }else{return false;}
     }
 
     public static boolean hasSSChest(Player player){
-        if (player.getInventory().getChestplate() != null){
+        ItemStack item = player.getInventory().getChestplate();
+        if (item != null){
             return player.getInventory().getChestplate().getTypeId() == plugin.getConfig().getInt(SSConfig.chestId);
         }else{return false;}
     }
 
     public static boolean hasSSLegs(Player player){
-        if (player.getInventory().getLeggings() != null){
+        ItemStack item = player.getInventory().getLeggings();
+        if (item != null){
             return player.getInventory().getLeggings().getTypeId() == plugin.getConfig().getInt(SSConfig.legsId);
         }else{return false;}
     }
 
     public static boolean hasSSBoots(Player player){
-        if (player.getInventory().getBoots() != null){
+        ItemStack item = player.getInventory().getBoots();
+        if (item != null){
             return player.getInventory().getBoots().getTypeId() == plugin.getConfig().getInt(SSConfig.bootsId);
         }else{return false;}
     }
@@ -81,7 +86,8 @@ public class SSMechanics {
     }
     
     public static int getHeldItem(Player player){
-        if (player.getInventory().getItemInHand() != null){
+        ItemStack item = player.getInventory().getItemInHand();
+        if (item != null){
             return player.getInventory().getItemInHand().getTypeId();
         }else{return 0;}
     }
