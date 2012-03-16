@@ -2,7 +2,10 @@ package com.acyrid.SunSteel.utils;
 
 
 import com.acyrid.SunSteel.SunSteel;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 
 public class SSMechanics {
 
@@ -11,6 +14,7 @@ public class SSMechanics {
     public static void init(SunSteel plugin) {
         SSMechanics.plugin = plugin;
     }
+    
     public static boolean hasSSArmor(Player player){
         return (hasSSChest(player) && SSPermissions.allowedChest(player))
                 && (hasSSLegs(player) && SSPermissions.allowedPants(player))
@@ -18,37 +22,57 @@ public class SSMechanics {
                 && (hasSSBoots(player)&& SSPermissions.allowedBoots(player));
     }
     public static boolean hasSSHelm(Player player){
-        return player.getInventory().getHelmet().getTypeId() == plugin.getConfig().getInt(SSConfig.helmId);
+        if (player.getInventory().getHelmet() != null){
+            return player.getInventory().getHelmet().getTypeId() == plugin.getConfig().getInt(SSConfig.helmId);
+        }else{return false;}
+
     }
 
     public static boolean hasSSChest(Player player){
-        return player.getInventory().getChestplate().getTypeId() == plugin.getConfig().getInt(SSConfig.chestId);
+        if (player.getInventory().getChestplate() != null){
+            return player.getInventory().getChestplate().getTypeId() == plugin.getConfig().getInt(SSConfig.chestId);
+        }else{return false;}
+
     }
 
     public static boolean hasSSLegs(Player player){
-        return player.getInventory().getLeggings().getTypeId() == plugin.getConfig().getInt(SSConfig.legsId);
+        if (player.getInventory().getLeggings() != null){
+            return player.getInventory().getLeggings().getTypeId() == plugin.getConfig().getInt(SSConfig.legsId);
+        }else{return false;}
+
     }
 
     public static boolean hasSSBoots(Player player){
-        return player.getInventory().getBoots().getTypeId() == plugin.getConfig().getInt(SSConfig.bootsId);
+        if (player.getInventory().getBoots() != null){
+            return player.getInventory().getBoots().getTypeId() == plugin.getConfig().getInt(SSConfig.bootsId);
+        }else{return false;}
     }
 
     public static boolean hasSSSword(Player player){
+        if (player.getInventory().getItemInHand() != null){
         return player.getInventory().getItemInHand().getTypeId() == plugin.getConfig().getInt(SSConfig.swordId);
+        }else{return false;}
     }
 
     public static boolean hasSSAxe(Player player){
+        if (player.getInventory().getItemInHand() != null){
         return player.getInventory().getItemInHand().getTypeId() == plugin.getConfig().getInt(SSConfig.axeId);
+    }else{return false;}
     }
     public static boolean hasSSPick(Player player){
-        return player.getInventory().getItemInHand().getTypeId() == plugin.getConfig().getInt(SSConfig.pickId);
+        if (player.getInventory().getItemInHand() != null){
+            return player.getInventory().getItemInHand().getTypeId() == plugin.getConfig().getInt(SSConfig.pickId);
+        }else{return false;}
     }
     public static boolean hasSSShovel(Player player){
-        return player.getInventory().getItemInHand().getTypeId() == plugin.getConfig().getInt(SSConfig.shovelId);
+        if (player.getInventory().getItemInHand() != null){
+            return player.getInventory().getItemInHand().getTypeId() == plugin.getConfig().getInt(SSConfig.shovelId);
+        }else{return false;}
     }
 
     public static boolean hasSSWeapon(Player player){
-        return (hasSSSword(player) && SSPermissions.allowedSword(player))|| (hasSSAxe(player) && SSPermissions.allowedAxe(player));
+        return (hasSSSword(player) && SSPermissions.allowedSword(player))
+                || (hasSSAxe(player) && SSPermissions.allowedAxe(player));
     }
     
     public static boolean hasSSHoverLava(Player player){
