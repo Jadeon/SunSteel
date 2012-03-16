@@ -23,7 +23,6 @@ public class SSPlayerListener implements Listener{
                 if(((blockLoc.getType() == Material.WATER || blockLoc.getType() == Material.STATIONARY_WATER)&&(SSMechanics.hasSSHoverWater(player)))
                         ||((blockLoc.getType() == Material.LAVA) || blockLoc.getType() == Material.STATIONARY_LAVA)&&(SSMechanics.hasSSHoverLava(player))){
                     event.getTo().setY(event.getFrom().getY());
-
                 }
 
         }
