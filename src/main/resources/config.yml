@@ -22,12 +22,12 @@ item_ids:
 # effect to last.                                          #
 ############################################################
 tick_durations:
-    fireDuration: 2;
-    riposteDuration: 2;
+    fireDuration: 2
+    riposteDuration: 2
 #############################################
 # These control the likelihood of a "proc"  #
 # occurring on a successful hit/break event #
 #############################################
 success_chances:
-    hit: 100;
-    smelt: 100;
+    hit: 100
+    smelt: 100
