@@ -26,7 +26,7 @@ public class SSDamageListener implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onEntityDeath(EntityDeathEvent event){
         if(event.getEntity() instanceof Animals){
-            if(cookedMeat((Animals) event.getEntity())){
+            if(cookedMeat((Animals)event.getEntity())){
                 Set<ItemStack> newDrops = new HashSet<ItemStack>();
                 for (ItemStack item : event.getDrops()) {
                     if(item.getType() == Material.RAW_BEEF){
@@ -100,10 +100,12 @@ public class SSDamageListener implements Listener {
 
 
     public static boolean cookedMeat(Animals animals) {
-        if(cookedAnimals.contains(animals)) {
-            cookedAnimals.remove(animals);
-            return true;
-        } else return false;
+        if(animals != null){
+            if(cookedAnimals.contains(animals)) {
+                cookedAnimals.remove(animals);
+                return true;
+            } else return false;
+        }else return false;
     }
 
     public static void burnAnimal(Animals animals) {

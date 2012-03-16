@@ -22,6 +22,9 @@ public class SSMechanics {
     }
     public static boolean hasSSHelm(Player player){
         ItemStack item = player.getInventory().getHelmet();
+        System.out.println("SSMechancis Line:24 getHelmet(): "+item);
+        System.out.println("Helmet ID: "+item.getTypeId());
+        System.out.println("Config Helm ID: "+plugin.getConfig().getInt(SSConfig.helmId));
         if (item != null){
             return player.getInventory().getHelmet().getTypeId() == plugin.getConfig().getInt(SSConfig.helmId);
         }else{return false;}
@@ -29,6 +32,9 @@ public class SSMechanics {
 
     public static boolean hasSSChest(Player player){
         ItemStack item = player.getInventory().getChestplate();
+        System.out.println("SSMechancis Line:34 getChestplate(): "+item);
+        System.out.println("Chest ID: "+item.getTypeId());
+        System.out.println("Config Chest ID: "+plugin.getConfig().getInt(SSConfig.chestId));
         if (item != null){
             return player.getInventory().getChestplate().getTypeId() == plugin.getConfig().getInt(SSConfig.chestId);
         }else{return false;}
@@ -36,6 +42,9 @@ public class SSMechanics {
 
     public static boolean hasSSLegs(Player player){
         ItemStack item = player.getInventory().getLeggings();
+        System.out.println("SSMechancis Line:44 getLeggings(): "+item);
+        System.out.println("Leggings ID: "+item.getTypeId());
+        System.out.println("Config Leggings ID: "+plugin.getConfig().getInt(SSConfig.legsId));
         if (item != null){
             return player.getInventory().getLeggings().getTypeId() == plugin.getConfig().getInt(SSConfig.legsId);
         }else{return false;}
@@ -43,23 +52,38 @@ public class SSMechanics {
 
     public static boolean hasSSBoots(Player player){
         ItemStack item = player.getInventory().getBoots();
+        System.out.println("SSMechancis Line:54 getBoots(): "+item);
+        System.out.println("Boots ID: "+item.getTypeId());
+        System.out.println("Config Boots ID: "+plugin.getConfig().getInt(SSConfig.chestId));
         if (item != null){
             return player.getInventory().getBoots().getTypeId() == plugin.getConfig().getInt(SSConfig.bootsId);
         }else{return false;}
     }
 
     public static boolean hasSSSword(Player player){
+        System.out.println("SSMechancis Line:63 getItemInHand(): "+player.getInventory().getItemInHand());
+        System.out.println("ItemInHand ID: "+getHeldItem(player));
+        System.out.println("Config Sword ID: "+plugin.getConfig().getInt(SSConfig.swordId));
         return getHeldItem(player) == plugin.getConfig().getInt(SSConfig.swordId);
     }
 
     public static boolean hasSSAxe(Player player){
+        System.out.println("SSMechancis Line:70 getItemInHand(): "+player.getInventory().getItemInHand());
+        System.out.println("ItemInHand ID: "+getHeldItem(player));
+        System.out.println("Config Axe ID: "+plugin.getConfig().getInt(SSConfig.axeId));
         return getHeldItem(player) == plugin.getConfig().getInt(SSConfig.axeId);
         }
 
     public static boolean hasSSPick(Player player){
+        System.out.println("SSMechancis Line:77 getItemInHand(): "+player.getInventory().getItemInHand());
+        System.out.println("ItemInHand ID: "+getHeldItem(player));
+        System.out.println("Config Pick ID: "+plugin.getConfig().getInt(SSConfig.pickId));
         return getHeldItem(player) == plugin.getConfig().getInt(SSConfig.pickId);
     }
     public static boolean hasSSShovel(Player player){
+        System.out.println("SSMechancis Line:83 getItemInHand(): "+player.getInventory().getItemInHand());
+        System.out.println("ItemInHand ID: "+getHeldItem(player));
+        System.out.println("Config Shovel ID: "+plugin.getConfig().getInt(SSConfig.shovelId));
         return getHeldItem(player) == plugin.getConfig().getInt(SSConfig.shovelId);
     }
 
