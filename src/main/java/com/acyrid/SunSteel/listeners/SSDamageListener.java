@@ -1,15 +1,12 @@
 package com.acyrid.SunSteel.listeners;
 
 import com.acyrid.SunSteel.SunSteel;
-import com.acyrid.SunSteel.utils.SSConfig;
 import com.acyrid.SunSteel.utils.SSMechanics;
-import com.acyrid.SunSteel.utils.SSPermissions;
 import org.bukkit.Material;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDamageByBlockEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
@@ -54,7 +51,6 @@ public class SSDamageListener implements Listener {
         if(event instanceof EntityDamageByEntityEvent) {
             EntityDamageByEntityEvent entityDamageByEntityEvent = (EntityDamageByEntityEvent) event;
             Entity aggressor = entityDamageByEntityEvent.getDamager();
-            //Allows player fire proc effect if using configuration based weapon (sword | axe)
             if(aggressor instanceof Player) {
                 Player player = (Player) aggressor;
                 if (SSMechanics.hasSSWeapon(player) && SSMechanics.hitChance()){
@@ -65,7 +61,6 @@ public class SSDamageListener implements Listener {
                     burnAnimal((Animals) event.getEntity());
                 }
             }
-            //Allows player fire riposte if using configuration based full set of armor
             if(event.getEntity() instanceof Player) {
                 Player player = (Player) event.getEntity();
                 if (SSMechanics.hasSSArmor(player) && SSMechanics.hitChance()) {
@@ -79,7 +74,6 @@ public class SSDamageListener implements Listener {
             if(event.getEntity() instanceof Animals){
                 burnAnimal((Animals) event.getEntity());
             }
-            //Allows player fire resistance effect if wearing configuration based full set of armor
             if(event.getEntity() instanceof Player) {
                 Player player = (Player) event.getEntity();
                 if (SSMechanics.hasSSArmor(player) && SSMechanics.hitChance()) {
@@ -88,7 +82,6 @@ public class SSDamageListener implements Listener {
                 }
             }                
         }
-        //Allows player water-breathing effect if wearing configuration based chestplate
         if((event.getCause() == EntityDamageEvent.DamageCause.DROWNING) && event.getEntity() instanceof Player){
             Player player = (Player) event.getEntity();
             if(SSMechanics.hasSSWaterBreath(player)){
@@ -98,8 +91,6 @@ public class SSDamageListener implements Listener {
             }
         }
     }
-
-
     public static boolean cookedMeat(Animals animals) {
         if(animals != null){
             if(cookedAnimals.contains(animals)) {
@@ -108,7 +99,6 @@ public class SSDamageListener implements Listener {
             } else return false;
         }else return false;
     }
-
     public static void burnAnimal(Animals animals) {
         if(!cookedAnimals.contains(animals)) {
             cookedAnimals.add(animals);

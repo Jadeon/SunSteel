@@ -2,7 +2,6 @@ package com.acyrid.SunSteel;
 
 import com.acyrid.SunSteel.listeners.*;
 import com.acyrid.SunSteel.utils.SSMechanics;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
@@ -27,9 +26,6 @@ public class SunSteel extends JavaPlugin{
         System.out.println("[" + getName() + "] enabled!");
         getConfig().getKeys(true);
         System.out.println(getConfig().getKeys(true));
-        if(SSMechanics.getDebugMode()){
-            System.out.println("[" + getName() + "] --------DEBUG MODE IS ENABLED-------- ");
-        }
     }
 
     private void registerEvents() {

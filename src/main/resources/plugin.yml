@@ -1,7 +1,7 @@
 name: SunSteel
 main: com.acyrid.SunSteel.SunSteel
 authors: ['Jadeon']
-version: 1.01
+version: 1.00
 permissions:
     sunsteel.*:
         description: Gives access to all sunsteel effects
@@ -23,7 +23,7 @@ permissions:
     sunsteel.armor.chest:
         description: Allows usage of the helmet effects Flame Riposte(Requires Full Set), Fire Resistance(Requires Full Set)
     sunsteel.armor.boots:
-        description: Allows usage of the boots effects Flame Riposte(Requires Full Set), Fire Resistance(Requires Full Set)
+        description: Allows usage of the boots effects This is ****required**** to give someone either Lava Walking or Water Walking
     sunsteel.armor.special.*:
         description: Gives access to all sunsteel special effects
         children:

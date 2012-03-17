@@ -1,5 +1,4 @@
 #congif.yml
-
 ####################################################################
 #list of item id's for respective items and their resulting effects#
 #  - helm|chest|legs|boots can only only contain armor item id's   #
@@ -15,8 +14,6 @@ item_ids:
     chest: 315
     legs: 316
     boots: 317
-
-
 ############################################################
 # Enter a value in seconds that you would like the burning #
 # effect to last.                                          #
@@ -31,6 +28,3 @@ tick_durations:
 success_chances:
     hit: 100
     smelt: 100
-
-debug_mode:
-    option: true

@@ -1,6 +1,7 @@
 package com.acyrid.SunSteel.utils;
 
 public class SSConfig {
+    //This file acts as a layer between config.yml and our SSMechanics for easy updating purposes.
     public static final String fireDuration = "tick_durations.fireDuration";
     public static final String riposteDuration = "tick_durations.riposteDuration";
     public static final String swordId = "item_ids.sword";
