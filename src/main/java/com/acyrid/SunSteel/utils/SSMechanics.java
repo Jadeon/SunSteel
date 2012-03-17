@@ -2,6 +2,7 @@ package com.acyrid.SunSteel.utils;
 
 
 import com.acyrid.SunSteel.SunSteel;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -52,12 +53,8 @@ public class SSMechanics {
 
     public static boolean hasSSBoots(Player player){
         ItemStack item = player.getInventory().getBoots();
-        System.out.println(plugin.getConfig().getKeys(true));
-        System.out.println("SSMechancis Line:54 getBoots(): "+item);
-        System.out.println("Boots ID: "+item.getTypeId());
-        System.out.println("Config Boots ID: "+plugin.getConfig().getInt(SSConfig.chestId));
         if (item != null){
-            return player.getInventory().getBoots().getTypeId() == plugin.getConfig().getInt(SSConfig.bootsId);
+            return item.getTypeId() == plugin.getConfig().getInt(SSConfig.bootsId);
         }else{return false;}
     }
 

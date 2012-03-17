@@ -18,8 +18,8 @@ import org.bukkit.inventory.ItemStack;
 import java.util.*;
 
 public class SSDamageListener implements Listener {
-    
-    private static ArrayList cookedAnimals;
+
+    protected static java.util.Vector<Animals> cookedAnimals = new java.util.Vector<Animals>(24);
 
     public SSDamageListener(SunSteel plugin) {
     }
@@ -27,6 +27,7 @@ public class SSDamageListener implements Listener {
     public void onEntityDeath(EntityDeathEvent event){
         if(event.getEntity() instanceof Animals){
             if(cookedMeat((Animals)event.getEntity())){
+                burnAnimal((Animals) event.getEntity());
                 Set<ItemStack> newDrops = new HashSet<ItemStack>();
                 for (ItemStack item : event.getDrops()) {
                     if(item.getType() == Material.RAW_BEEF){
@@ -48,6 +49,8 @@ public class SSDamageListener implements Listener {
 
     @EventHandler
     public void onEntityDamage(EntityDamageEvent event) {
+        if(event.isCancelled())
+            return;
         if(event instanceof EntityDamageByEntityEvent) {
             EntityDamageByEntityEvent entityDamageByEntityEvent = (EntityDamageByEntityEvent) event;
             Entity aggressor = entityDamageByEntityEvent.getDamager();
@@ -86,14 +89,12 @@ public class SSDamageListener implements Listener {
             }                
         }
         //Allows player water-breathing effect if wearing configuration based chestplate
-        if(event instanceof EntityDamageByBlockEvent) {
-            if(event.getEntity() instanceof Player) {
-                Player player = (Player) event.getEntity();
-                if(event.getCause().equals(event.getCause().DROWNING)&&(SSMechanics.hasSSWaterBreath(player))){
-                            player.setRemainingAir(10);
-                            player.setMaximumAir(10);
-                            event.setCancelled(true);
-                }
+        if((event.getCause() == EntityDamageEvent.DamageCause.DROWNING) && event.getEntity() instanceof Player){
+            Player player = (Player) event.getEntity();
+            if(SSMechanics.hasSSWaterBreath(player)){
+                player.setRemainingAir(player.getMaximumAir());
+                event.setCancelled(true);
+
             }
         }
     }
@@ -109,7 +110,9 @@ public class SSDamageListener implements Listener {
     }
 
     public static void burnAnimal(Animals animals) {
-        if(!cookedAnimals.contains(animals)) cookedAnimals.add(animals);
+        if(!cookedAnimals.contains(animals)) {
+            cookedAnimals.add(animals);
+        }
     }
     
 }

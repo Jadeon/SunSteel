@@ -8,6 +8,7 @@ permissions:
         children:
             sunsteel.armor.*: true
             sunsteel.tools.*: true
+            sunsteel.special.*: true
     sunsteel.armor.*:
         description: Gives access to all sunsteel armor effects
         children:
@@ -15,7 +16,6 @@ permissions:
             sunsteel.armor.legs: true
             sunsteel.armor.chest: true
             sunsteel.armor.boots: true
-            sunsteel.armor.special.*: true
     sunsteel.armor.helm:
         description: Allows usage of the helmet effects Liquid Breathing(Water & Lava), Flame Riposte(Requires Full Set), Fire Resistance
     sunsteel.armor.legs:
@@ -27,9 +27,9 @@ permissions:
     sunsteel.armor.special.*:
         description: Gives access to all sunsteel special effects
         children:
-            sunsteel.armor.special.lavafloat: true
-            sunsteel.armor.special.waterfloat: true
-            sunsteel.armor.special.waterbreath: true
+            sunsteel.special.lavafloat: true
+            sunsteel.special.waterfloat: true
+            sunsteel.special.waterbreath: true
     sunsteel.armor.special.lavafloat:
         description: Allows usage of the boots effect Lava Walking
     sunsteel.armor.special.waterfloat:

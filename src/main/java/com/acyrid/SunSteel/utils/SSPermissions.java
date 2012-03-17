@@ -12,10 +12,10 @@ public class SSPermissions{
     private static final String bootsPerm = "sunsteel.armor.boots";
     private static final String helmsPerm = "sunsteel.armor.helm";
     private static final String pantsPerm = "sunsteel.armor.legs";
-    private static final String hoverLavaPerm = "sunsteel.armor.special.lavafloat";
-    private static final String hoverWaterPerm = "sunsteel.armor.special.waterfloat";
+    private static final String hoverLavaPerm = "sunsteel.special.lavafloat";
+    private static final String hoverWaterPerm = "sunsteel.special.waterfloat";
     //private static final String breatheLavaPerm = "sunsteel.armor.special.lavabreath";
-    private static final String breatheWaterPerm = "sunsteel.armor.special.waterbreath";
+    private static final String breatheWaterPerm = "sunsteel.special.waterbreath";
     private static final String swordPerm = "sunsteel.tools.sword";
     private static final String axePerm = "sunsteel.tools.axe";
     private static final String pickPerm = "sunsteel.tools.pick";
