@@ -24,17 +24,18 @@ permissions:
         description: Allows usage of the helmet effects Flame Riposte(Requires Full Set), Fire Resistance(Requires Full Set)
     sunsteel.armor.boots:
         description: Allows usage of the boots effects This is ****required**** to give someone either Lava Walking or Water Walking
-    sunsteel.armor.special.*:
+
+    sunsteel.special.*:
         description: Gives access to all sunsteel special effects
         children:
             sunsteel.special.lavafloat: true
             sunsteel.special.waterfloat: true
             sunsteel.special.waterbreath: true
-    sunsteel.armor.special.lavafloat:
+    sunsteel.special.lavafloat:
         description: Allows usage of the boots effect Lava Walking
-    sunsteel.armor.special.waterfloat:
+    sunsteel.special.waterfloat:
         description: Allows usage of the boots effect Water Walking
-    sunsteel.armor.special.waterbreath:
+    sunsteel.special.waterbreath:
         description: Allows usage of the chest effect Water Breathing
     sunsteel.tools.*:
         description: Gives access to all sunsteel tool effects
@@ -47,7 +48,6 @@ permissions:
         description: Allows usage of the sword effect Sword of Flames
     sunsteel.tools.axe:
         description: Allows usage of the axe effect Inferno Axe
-        default: true
     sunsteel.tools.pick:
         description: Allows usage of the pick effect Molten Pick
     sunsteel.tools.shovel:
