@@ -2,8 +2,6 @@ package com.acyrid.SunSteel.listeners;
 
 import com.acyrid.SunSteel.SunSteel;
 import com.acyrid.SunSteel.utils.SSMechanics;
-import com.google.common.collect.Iterators;
-import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -72,7 +70,3 @@ public class SSPlayerListener implements Listener{
         }
     }
 }
-
- /*[21:44] <Afforess|Away> Keep a HashSet<Block> and add blocks you send a block change for
-[21:44] <Adisyn> ok i will look into that as I've never used a HashSet :)
-[21:44] <Afforess|Away> then do a repeating task and if the player > 3 blocks away, send the real block back*/
