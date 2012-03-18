@@ -63,26 +63,53 @@ public class SSDamageListener implements Listener {
             }
             if(event.getEntity() instanceof Player) {
                 Player player = (Player) event.getEntity();
-                if (SSMechanics.hasSSArmor(player) && SSMechanics.hitChance()) {
+                if (SSMechanics.hasSSFireRiposte(player) && SSMechanics.riposteChance()) {
                     aggressor.setFireTicks(SSMechanics.riposteTicks());
                 }
             }
         }
         else if((event.getCause() == EntityDamageEvent.DamageCause.FIRE)
-                || (event.getCause() == EntityDamageEvent.DamageCause.FIRE_TICK)
-                || (event.getCause() == EntityDamageEvent.DamageCause.LAVA)){
+                || (event.getCause() == EntityDamageEvent.DamageCause.FIRE_TICK)){
             if(event.getEntity() instanceof Animals){
                 burnAnimal((Animals) event.getEntity());
             }
             if(event.getEntity() instanceof Player) {
                 Player player = (Player) event.getEntity();
-                if (SSMechanics.hasSSArmor(player) && SSMechanics.hitChance()) {
+                if ((SSMechanics.hasSSFireResist(player)) && SSMechanics.resistFireChance()) {
                     event.setCancelled(true);
                     player.setFireTicks(0);
                 }
             }                
         }
-        if((event.getCause() == EntityDamageEvent.DamageCause.DROWNING) && event.getEntity() instanceof Player){
+
+        else if(event.getCause() == EntityDamageEvent.DamageCause.LAVA){
+            if(event.getEntity() instanceof Player){
+                Player player = (Player) event.getEntity();
+                if(SSMechanics.hasSSArmor(player)){
+                    event.setCancelled(true);
+                }else if(SSMechanics.hasSSChest(player)&&
+                        (SSMechanics.hasSSHelm(player)||SSMechanics.hasSSLegs(player))){
+                    event.setDamage(1);
+                }else if(SSMechanics.hasSSChest(player)){
+                    event.setDamage(2);
+                }else if((SSMechanics.hasSSHelm(player))&&(SSMechanics.hasSSLegs(player))){
+                    event.setDamage(2);
+                }else if(SSMechanics.hasSSHelm(player)||SSMechanics.hasSSLegs(player)){
+                    event.setDamage(3);
+                }
+            }
+        }
+        
+        else if(event.getCause() == EntityDamageEvent.DamageCause.FALL){
+            if(event.getEntity() instanceof Player){
+                Player player = (Player) event.getEntity();
+                if(SSMechanics.hasSSHotAir(player) && SSMechanics.resistFallChance()){
+                    event.setCancelled(true);
+                }
+            }
+        }
+
+        else if((event.getCause() == EntityDamageEvent.DamageCause.DROWNING) && event.getEntity() instanceof Player){
             Player player = (Player) event.getEntity();
             if(SSMechanics.hasSSWaterBreath(player)){
                 player.setRemainingAir(player.getMaximumAir());

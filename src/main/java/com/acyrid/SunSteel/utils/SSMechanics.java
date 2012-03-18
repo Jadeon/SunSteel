@@ -57,8 +57,11 @@ public class SSMechanics {
         return getHeldItem(player) == plugin.getConfig().getInt(SSConfig.shovelId);}
 
     public static boolean hasSSWeapon(Player player){
-        return (hasSSSword(player) && SSPermissions.allowedSword(player))
-                || (hasSSAxe(player) && SSPermissions.allowedAxe(player));}
+        if(getAxeWeapon()){
+            return (hasSSSword(player) && SSPermissions.allowedSword(player))
+                || (hasSSAxe(player) && SSPermissions.allowedAxe(player));
+        }else{return((hasSSSword(player) && SSPermissions.allowedSword(player)));}
+    }
     
     public static boolean hasSSHoverLava(Player player){
         return (hasSSBoots(player) && SSPermissions.allowedBoots(player) && SSPermissions.allowedLavaHover(player));
@@ -70,6 +73,19 @@ public class SSMechanics {
 
     public static boolean hasSSHoverWater(Player player){
         return (hasSSBoots(player) && SSPermissions.allowedBoots(player) && SSPermissions.allowedWaterHover(player));
+    }
+    
+    public static boolean hasSSFireResist(Player player){
+        return(((SSMechanics.hasSSLegs(player))||(SSMechanics.hasSSChest(player)) || (SSMechanics.hasSSHelm(player))
+                ||(SSMechanics.hasSSBoots(player))) && SSPermissions.allowedFireResist(player));
+    }
+
+    public static boolean hasSSFireRiposte(Player player){
+        return((SSMechanics.hasSSChest(player)) && SSPermissions.allowedFireRiposte(player));
+    }
+    
+    public static boolean hasSSHotAir(Player player){
+        return((SSMechanics.hasSSLegs(player)) && SSPermissions.allowedFallDamage(player));
     }
     
     public static int getHeldItem(Player player){
@@ -100,7 +116,25 @@ public class SSMechanics {
 
     public static int getRiposteTicks(){return plugin.getConfig().getInt(SSConfig.riposteDuration);}
     
-    public static boolean getDebugMode(){return plugin.getConfig().getBoolean(SSConfig.debugMode);}
+    public static boolean resistFireChance(){
+        double luck = Math.random()*100;
+        return (getFireResistChance()>= luck);}
+    
+    public static int getFireResistChance(){return plugin.getConfig().getInt(SSConfig.fireResistChance);}
+
+    public static boolean riposteChance(){
+        double luck = Math.random()*100;
+        return (getRiposteChance()>= luck);}
+
+    public static int getRiposteChance(){return plugin.getConfig().getInt(SSConfig.riposteChance);}
+    
+    public static boolean resistFallChance(){
+        double luck = Math.random()*100;
+        return(getFallChance()>= luck);}
+    
+    public static int getFallChance(){return plugin.getConfig().getInt(SSConfig.fallChance);}
+    
+    public static boolean getAxeWeapon(){return plugin.getConfig().getBoolean(SSConfig.axeWeapon);}
     
 
 }

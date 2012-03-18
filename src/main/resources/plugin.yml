@@ -17,11 +17,11 @@ permissions:
             sunsteel.armor.chest: true
             sunsteel.armor.boots: true
     sunsteel.armor.helm:
-        description: Allows usage of the helmet effects Liquid Breathing(Water & Lava), Flame Riposte(Requires Full Set), Fire Resistance
+        description: Allows usage of the helmet effects Liquid Breathing(Water & Lava), Lava Damage Resistance +1, Nullifies Flames
     sunsteel.armor.legs:
-        description: Allows usage of the leggings effects Flame Riposte(Requires Full Set), Fire Resistance(Requires Full Set)
+        description: Allows usage of the leggings effects Safe Fall(No fall damage), Lava Damage Resistance +1, Nullifies Flames
     sunsteel.armor.chest:
-        description: Allows usage of the helmet effects Flame Riposte(Requires Full Set), Fire Resistance(Requires Full Set)
+        description: Allows usage of the helmet effects Flame Riposte, Lava Damage Resistance  +2, Nullifies Flames
     sunsteel.armor.boots:
         description: Allows usage of the boots effects This is ****required**** to give someone either Lava Walking or Water Walking
 
@@ -31,12 +31,21 @@ permissions:
             sunsteel.special.lavafloat: true
             sunsteel.special.waterfloat: true
             sunsteel.special.waterbreath: true
+            sunsteel.special.fireresist: true
+            sunsteel.special.fireriposte: true
+            sunsteel.special.safefall: true
     sunsteel.special.lavafloat:
         description: Allows usage of the boots effect Lava Walking
     sunsteel.special.waterfloat:
         description: Allows usage of the boots effect Water Walking
     sunsteel.special.waterbreath:
-        description: Allows usage of the chest effect Water Breathing
+        description: Allows usage of the helmets effect Water Breathing
+    sunsteel.special.fireresist:
+        description: Allows usage of the Lava Resistance and Flame Nullification effects on select armors
+    sunsteel.special.fireriposte:
+        description: Allows usage of the Flame Riposte effect on chests.
+    sunsteel.special.safefall:
+        description: Allows usage of the Safe Fall effect on legs.
     sunsteel.tools.*:
         description: Gives access to all sunsteel tool effects
         children:

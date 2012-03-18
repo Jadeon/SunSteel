@@ -2,9 +2,11 @@ package com.acyrid.SunSteel;
 
 import com.acyrid.SunSteel.listeners.*;
 import com.acyrid.SunSteel.utils.SSMechanics;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
+import java.util.logging.Level;
 
 public class SunSteel extends JavaPlugin{
 
@@ -14,7 +16,7 @@ public class SunSteel extends JavaPlugin{
     private SSEntityListener entityListener = new SSEntityListener(this);
 
     public void onDisable(){
-        System.out.println("["+getName()+"] disabled..");
+        Bukkit.getLogger().log(Level.INFO, "Disabled!");
     }                                                    
     public void onEnable(){
         if(!new File(this.getDataFolder(), "config.yml").exists()){
@@ -23,9 +25,8 @@ public class SunSteel extends JavaPlugin{
         getConfig();
         this.registerEvents();
         SSMechanics.init(this);
-        System.out.println("[" + getName() + "] enabled!");
+        Bukkit.getLogger().log(Level.INFO, "Disabled!");
         getConfig().getKeys(true);
-        System.out.println(getConfig().getKeys(true));
     }
 
     private void registerEvents() {

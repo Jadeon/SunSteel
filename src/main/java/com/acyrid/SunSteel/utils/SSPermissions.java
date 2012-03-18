@@ -10,6 +10,9 @@ public class SSPermissions{
     private static final String hoverLavaPerm = "sunsteel.special.lavafloat";
     private static final String hoverWaterPerm = "sunsteel.special.waterfloat";
     private static final String breatheWaterPerm = "sunsteel.special.waterbreath";
+    private static final String fireResistPerm = "sunsteel.special.fireresist";
+    private static final String fireRipostePerm = "sunsteel.special.fireriposte";
+    private static final String fallDamagePerm = "sunsteel.special.safefall";
     private static final String swordPerm = "sunsteel.tools.sword";
     private static final String axePerm = "sunsteel.tools.axe";
     private static final String pickPerm = "sunsteel.tools.pick";
@@ -28,6 +31,12 @@ public class SSPermissions{
     public static boolean allowedWaterHover(Player player){return player.hasPermission(hoverWaterPerm);}
 
     public static boolean allowedWaterBreath(Player player){return player.hasPermission(breatheWaterPerm);}
+
+    public static boolean allowedFireResist(Player player){return player.hasPermission(fireResistPerm);}
+
+    public static boolean allowedFireRiposte(Player player){return player.hasPermission(fireRipostePerm);}
+
+    public static boolean allowedFallDamage(Player player){return player.hasPermission(fallDamagePerm);}
 
     public static boolean allowedSword(Player player){return player.hasPermission(swordPerm);}
 

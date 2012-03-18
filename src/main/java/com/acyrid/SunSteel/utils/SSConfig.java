@@ -14,6 +14,10 @@ public class SSConfig {
     public static final String shovelId = "item_ids.shovel";
     public static final String hitChance = "success_chances.hit";
     public static final String smeltChance = "success_chances.smelt";
+    public static final String fireResistChance = "succss_chances.fire_resist";
+    public static final String riposteChance = "succss_chances.riposte";
+    public static final String fallChance = "success_chances.fall";
+    public static final String axeWeapon = "toggle_option.axe_as_weapon";
     public static final String debugMode = "debug_mode.option";
 
 }

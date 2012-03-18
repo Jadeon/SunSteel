@@ -27,4 +27,12 @@ tick_durations:
 #############################################
 success_chances:
     hit: 100
+    fall: 100
     smelt: 100
+    riposte: 100
+    fire_resist: 100
+#############################################
+# Togglable options as true or false        #
+#############################################
+toggle_options:
+    axe_as_weapon: true
