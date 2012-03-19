@@ -2,6 +2,7 @@ package com.acyrid.SunSteel.listeners;
 
 import com.acyrid.SunSteel.SunSteel;
 import com.acyrid.SunSteel.utils.SSMechanics;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
@@ -9,10 +10,12 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.*;
+import java.util.logging.Level;
 
 public class SSDamageListener implements Listener {
 
@@ -68,35 +71,39 @@ public class SSDamageListener implements Listener {
                 }
             }
         }
-        else if((event.getCause() == EntityDamageEvent.DamageCause.FIRE)
-                || (event.getCause() == EntityDamageEvent.DamageCause.FIRE_TICK)){
+        else if((event.getCause() == DamageCause.FIRE)
+                || (event.getCause() == DamageCause.FIRE_TICK)){
             if(event.getEntity() instanceof Animals){
                 burnAnimal((Animals) event.getEntity());
             }
             if(event.getEntity() instanceof Player) {
                 Player player = (Player) event.getEntity();
-                if ((SSMechanics.hasSSFireResist(player)) && SSMechanics.resistFireChance()) {
-                    event.setCancelled(true);
-                    player.setFireTicks(0);
+                if ((SSMechanics.hasSSFireResist(player)) ){
+                    if(SSMechanics.hasSSArmorANY(player) && SSMechanics.resistFireChance()) {
+                        event.setCancelled(true);
+                        player.setFireTicks(0);
+                    }
                 }
             }                
         }
 
-        else if(event.getCause() == EntityDamageEvent.DamageCause.LAVA){
+        else if(event.getCause() == DamageCause.LAVA){
             if(event.getEntity() instanceof Player){
                 Player player = (Player) event.getEntity();
-                if(SSMechanics.hasSSArmor(player)){
-                    event.setCancelled(true);
-                }else if(SSMechanics.hasSSChest(player)&&
-                        (SSMechanics.hasSSHelm(player)||SSMechanics.hasSSLegs(player))){
-                    event.setDamage(1);
-                }else if(SSMechanics.hasSSChest(player)){
-                    event.setDamage(2);
-                }else if((SSMechanics.hasSSHelm(player))&&(SSMechanics.hasSSLegs(player))){
-                    event.setDamage(2);
-                }else if(SSMechanics.hasSSHelm(player)||SSMechanics.hasSSLegs(player)){
-                    event.setDamage(3);
-                }
+                if(SSMechanics.hasSSFireResist(player)){
+                    if(SSMechanics.hasSSArmor(player)){
+                        event.setCancelled(true);
+                    }else if(SSMechanics.hasSSChest(player)&&
+                            (SSMechanics.hasSSHelm(player)||SSMechanics.hasSSLegs(player))){
+                        event.setDamage(1);
+                    }else if(SSMechanics.hasSSChest(player)){
+                        event.setDamage(2);
+                    }else if((SSMechanics.hasSSHelm(player))&&(SSMechanics.hasSSLegs(player))){
+                        event.setDamage(2);
+                    }else if(SSMechanics.hasSSHelm(player)||SSMechanics.hasSSLegs(player)){
+                        event.setDamage(3);
+                    }
+                }                                           
             }
         }
         

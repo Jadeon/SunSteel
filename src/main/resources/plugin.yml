@@ -24,7 +24,6 @@ permissions:
         description: Allows usage of the helmet effects Flame Riposte, Lava Damage Resistance  +2, Nullifies Flames
     sunsteel.armor.boots:
         description: Allows usage of the boots effects This is ****required**** to give someone either Lava Walking or Water Walking
-
     sunsteel.special.*:
         description: Gives access to all sunsteel special effects
         children:

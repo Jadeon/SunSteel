@@ -19,6 +19,11 @@ public class SSMechanics {
                 && (hasSSLegs(player) && SSPermissions.allowedPants(player))
                 && (hasSSHelm(player) && SSPermissions.allowedHelm(player));
     }
+    public static boolean hasSSArmorANY(Player player){
+        return (hasSSChest(player) && SSPermissions.allowedChest(player))
+                || (hasSSLegs(player) && SSPermissions.allowedPants(player))
+                || (hasSSHelm(player) && SSPermissions.allowedHelm(player));
+    }
     public static boolean hasSSHelm(Player player){
         ItemStack item = player.getInventory().getHelmet();
         if (item != null){return player.getInventory().getHelmet().getTypeId() ==
