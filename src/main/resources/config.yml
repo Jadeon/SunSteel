@@ -14,6 +14,8 @@ item_ids:
     chest: 315
     legs: 316
     boots: 317
+    water_walk_block:
+    lava_walk_block:
 ############################################################
 # Enter a value in seconds that you would like the burning #
 # effect to last.                                          #
@@ -36,3 +38,4 @@ success_chances:
 #############################################
 toggle_options:
     axe_as_weapon: true
+
