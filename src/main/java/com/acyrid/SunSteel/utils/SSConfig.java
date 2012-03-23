@@ -12,6 +12,8 @@ public class SSConfig {
     public static final String pickId = "item_ids.pick";
     public static final String axeId = "item_ids.axe";
     public static final String shovelId = "item_ids.shovel";
+    public static final String waterwalkID = "item_ids.water_walk_block";
+    public static final String lavawalkID = "item_ids.lava_walk_block";
     public static final String hitChance = "success_chances.hit";
     public static final String smeltChance = "success_chances.smelt";
     public static final String fireResistChance = "success_chances.fire_resist";
