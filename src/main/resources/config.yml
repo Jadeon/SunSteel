@@ -14,8 +14,8 @@ item_ids:
     chest: 315
     legs: 316
     boots: 317
-    water_walk_block:
-    lava_walk_block:
+    water_walk_block: 20
+    lava_walk_block: 20
 ############################################################
 # Enter a value in seconds that you would like the burning #
 # effect to last.                                          #
