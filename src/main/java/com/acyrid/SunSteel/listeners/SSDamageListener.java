@@ -25,23 +25,30 @@ public class SSDamageListener implements Listener {
     }
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onEntityDeath(EntityDeathEvent event){
-        if(event.getEntity() instanceof Animals){
-            if(cookedMeat((Animals)event.getEntity())){
-                burnAnimal((Animals) event.getEntity());
-                Set<ItemStack> newDrops = new HashSet<ItemStack>();
-                for (ItemStack item : event.getDrops()) {
-                    if(item.getType() == Material.RAW_BEEF){
-                        newDrops.add(new ItemStack(Material.COOKED_BEEF));
-                    }else if(item.getType() == Material.RAW_CHICKEN){
-                        newDrops.add(new ItemStack(Material.COOKED_CHICKEN));
-                    }else if(item.getType() == Material.RAW_FISH){
-                        newDrops.add(new ItemStack(Material.COOKED_FISH));
-                    } else {
-                        newDrops.add(item);
+        EntityDeathEvent entityDeathEvent = (EntityDeathEvent) event;
+        Entity killer = entityDeathEvent.getEntity().getKiller();
+        if(killer instanceof Player){
+            Player player = (Player) killer;
+            if(SSMechanics.hasSSWeapon(player)){
+                if(event.getEntity() instanceof Animals){
+                    if(cookedMeat((Animals)event.getEntity())){
+                        burnAnimal((Animals) event.getEntity());
+                        Set<ItemStack> newDrops = new HashSet<ItemStack>();
+                        for (ItemStack item : event.getDrops()) {
+                            if(item.getType() == Material.RAW_BEEF){
+                                newDrops.add(new ItemStack(Material.COOKED_BEEF));
+                            }else if(item.getType() == Material.RAW_CHICKEN){
+                                newDrops.add(new ItemStack(Material.COOKED_CHICKEN));
+                            }else if(item.getType() == Material.RAW_FISH){
+                                newDrops.add(new ItemStack(Material.COOKED_FISH));
+                            } else {
+                                newDrops.add(item);
+                            }
+                        }
+                        event.getDrops().clear();
+                        event.getDrops().addAll(newDrops);
                     }
                 }
-                event.getDrops().clear();
-                event.getDrops().addAll(newDrops);
             }
         }
     }
