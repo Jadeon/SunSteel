@@ -31,14 +31,26 @@ public class SSPlayerListener implements Listener{
                         Block block = toBlockLoc.getRelative(dx, -1, dz);
                         if(((block.getType() == Material.WATER || block.getType() == Material.STATIONARY_WATER))&&
                                 SSMechanics.hasSSHoverWater(player)){
+                            if(Material.getMaterial(SSConfig.waterwalkID) != null){
                             player.sendBlockChange(block.getLocation() ,Material.getMaterial(SSConfig.waterwalkID),(byte)0 );
                             revertSet.get(player).add(block);
                             revertCheck(player, Material.WATER);
+                            }else{
+                                player.sendBlockChange(block.getLocation() ,Material.GLASS,(byte)0 );
+                                revertSet.get(player).add(block);
+                                revertCheck(player, Material.WATER);
+                            }
                         }else if(((block.getType() == Material.LAVA || block.getType() == Material.STATIONARY_LAVA))&&
                                 SSMechanics.hasSSHoverLava(player)){
+                            if(Material.getMaterial(SSConfig.lavawalkID) != null){
                             player.sendBlockChange(block.getLocation() ,Material.getMaterial(SSConfig.lavawalkID),(byte)0 );
                             revertSet.get(player).add(block);
                             revertCheck(player, Material.LAVA);
+                            }else{
+                                player.sendBlockChange(block.getLocation() ,Material.GLASS,(byte)0 );
+                                revertSet.get(player).add(block);
+                                revertCheck(player, Material.LAVA);
+                            }
                         }
                     }
                 }
