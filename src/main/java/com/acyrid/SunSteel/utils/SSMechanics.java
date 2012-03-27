@@ -73,7 +73,7 @@ public class SSMechanics {
     }
 
     public static boolean hasSSWaterBreath(Player player){
-        return (hasSSChest(player) && SSPermissions.allowedChest(player) && SSPermissions.allowedWaterBreath(player));
+        return (hasSSHelm(player) && SSPermissions.allowedHelm(player) && SSPermissions.allowedWaterBreath(player));
     }
 
     public static boolean hasSSHoverWater(Player player){
@@ -140,6 +140,17 @@ public class SSMechanics {
     public static int getFallChance(){return plugin.getConfig().getInt(SSConfig.fallChance);}
     
     public static boolean getAxeWeapon(){return plugin.getConfig().getBoolean(SSConfig.axeWeapon);}
+
+    public static int getLavaWalkBlock(){
+        int id=20;
+        id=plugin.getConfig().getInt(SSConfig.lavawalkID);
+        return id;
+    }
+    public static int getWaterWalkBlock(){
+        int id=20;
+        id=plugin.getConfig().getInt(SSConfig.waterwalkID);
+        return id;
+    }
     
 
 }
