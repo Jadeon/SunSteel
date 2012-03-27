@@ -31,21 +31,41 @@ public class SSPlayerListener implements Listener{
                     for (int dx = -range; dx <=range; dx++) {
                         for (int dz = -range; dz <=range; dz++) {
                             Block block = toBlockLoc.getRelative(dx, -1, dz);
-                            if(((block.getType() == Material.WATER || block.getType() == Material.STATIONARY_WATER))&&
-                                    SSMechanics.hasSSHoverWater(player)){
-                                if(Material.getMaterial(SSMechanics.getWaterWalkBlock()) != null){
-                                    player.sendBlockChange(block.getLocation() ,Material.getMaterial(SSMechanics.getWaterWalkBlock()),(byte)0 );
-                                    revertSet.get(player).add(block);
-                                    revertCheck(player, Material.WATER);
-                                    lastBlock = 1;
+                            if(!SSMechanics.getNoCheatInstalled()){
+                                if(((block.getType() == Material.WATER || block.getType() == Material.STATIONARY_WATER))&&
+                                        SSMechanics.hasSSHoverWater(player)){
+                                    if(Material.getMaterial(SSMechanics.getWaterWalkBlock()) != null){
+                                        player.sendBlockChange(block.getLocation() ,Material.getMaterial(SSMechanics.getWaterWalkBlock()),(byte)0 );
+                                        revertSet.get(player).add(block);
+                                        revertCheck(player, Material.WATER);
+                                        lastBlock = 1;
+                                    }
+                                }else if(((block.getType() == Material.LAVA || block.getType() == Material.STATIONARY_LAVA))&&
+                                        SSMechanics.hasSSHoverLava(player)){
+                                    if(Material.getMaterial(SSMechanics.getLavaWalkBlock()) != null){
+                                        player.sendBlockChange(block.getLocation() ,Material.getMaterial(SSMechanics.getLavaWalkBlock()),(byte)0 );
+                                        revertSet.get(player).add(block);
+                                        revertCheck(player, Material.LAVA);
+                                        lastBlock = 2;
+                                    }
                                 }
-                            }else if(((block.getType() == Material.LAVA || block.getType() == Material.STATIONARY_LAVA))&&
-                                    SSMechanics.hasSSHoverLava(player)){
-                                if(Material.getMaterial(SSMechanics.getLavaWalkBlock()) != null){
-                                    player.sendBlockChange(block.getLocation() ,Material.getMaterial(SSMechanics.getLavaWalkBlock()),(byte)0 );
-                                    revertSet.get(player).add(block);
-                                    revertCheck(player, Material.LAVA);
-                                    lastBlock = 2;
+                            }else if(SSMechanics.getNoCheatInstalled()){
+                                if(((block.getType() == Material.WATER || block.getType() == Material.STATIONARY_WATER))&&
+                                        SSMechanics.hasSSHoverWater(player)){
+                                    if(Material.getMaterial(SSMechanics.getWaterWalkBlock()) != null){
+                                        block.setTypeId(SSMechanics.getWaterWalkBlock());
+                                        revertSet.get(player).add(block);
+                                        revertCheck(player, Material.WATER);
+                                        lastBlock = 1;
+                                    }
+                                }else if(((block.getType() == Material.LAVA || block.getType() == Material.STATIONARY_LAVA))&&
+                                        SSMechanics.hasSSHoverLava(player)){
+                                    if(Material.getMaterial(SSMechanics.getLavaWalkBlock()) != null){
+                                        block.setTypeId(SSMechanics.getLavaWalkBlock());
+                                        revertSet.get(player).add(block);
+                                        revertCheck(player, Material.LAVA);
+                                        lastBlock = 2;
+                                    }
                                 }
                             }
                         }
@@ -67,8 +87,13 @@ public class SSPlayerListener implements Listener{
             int xCheck = abs(nextBlock.getX()) - abs(playerBlock.getX());
             int zCheck = abs(nextBlock.getZ()) - abs(playerBlock.getZ());
             if((abs(xCheck) > 3 || abs(zCheck) >3)){
-                player.sendBlockChange(nextBlock.getLocation(), material,(byte)0 );
-                iterator.remove();
+                if(!SSMechanics.getNoCheatInstalled()){
+                    player.sendBlockChange(nextBlock.getLocation(), material,(byte)0 );
+                    iterator.remove();
+                }else if(SSMechanics.getNoCheatInstalled()){
+                    nextBlock.setType(material);
+                    iterator.remove();
+                }
             }
         }
     }

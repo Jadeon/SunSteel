@@ -141,6 +141,8 @@ public class SSMechanics {
     
     public static boolean getAxeWeapon(){return plugin.getConfig().getBoolean(SSConfig.axeWeapon);}
 
+    public static boolean getNoCheatInstalled(){return plugin.getConfig().getBoolean(SSConfig.Use_NoCheat);}
+
     public static int getLavaWalkBlock(){
         int id=20;
         id=plugin.getConfig().getInt(SSConfig.lavawalkID);
