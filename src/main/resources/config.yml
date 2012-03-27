@@ -38,4 +38,5 @@ success_chances:
 #############################################
 toggle_options:
     axe_as_weapon: true
+    NoCheat_is_installed: false             #This does nothing at the moment.
 
