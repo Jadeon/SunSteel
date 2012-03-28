@@ -18,22 +18,22 @@ public class SunSteel extends JavaPlugin{
     private SSDamageListener damageListener = new SSDamageListener(this);
     private SSBlockListener blockListener = new SSBlockListener(this);
     private SSEntityListener entityListener = new SSEntityListener(this);
-    private String configVersion = "1.02e";
-    private String oldconfigVersion = "1.02d";
+    private String configVersion = "1.02f";
+    private String oldconfigVersion = "1.02e";
 
     public void onDisable(){
         this.getLogger().log(Level.INFO, "is Disabled!");
     }                                                    
     public void onEnable(){
         if(!new File(this.getDataFolder(), "config.yml").exists()){
+            this.getLogger().log(Level.INFO, "<----FIRST RUN, Generating config.yml---->");
             saveDefaultConfig();
-        }else if(configVersion !=this.getConfig().getString(SSConfig.configCheck)){
+        }else if(!this.getConfig().getString(SSConfig.configCheck).contentEquals(configVersion)){
             File file = new File(this.getDataFolder()+File.separator+"config.yml");
-            this.getLogger().log(Level.INFO, "-----Config.yml is not up-to-date for this version-----");
+            this.getLogger().log(Level.INFO, "<----Config.yml is not up-to-date for this version---->");
             file.renameTo(new File(this.getDataFolder()+File.separator + "OLD_config_" + oldconfigVersion + ".yml"));
-            
-            this.getLogger().log(Level.INFO, "-----Renaming your Config to OLD_config_" + oldconfigVersion + ".yml-----");
-            this.getLogger().log(Level.INFO, "-----Generating new config.yml for version:"+configVersion+"------");
+            this.getLogger().log(Level.INFO, "<----Renaming your Config to OLD_config_" + oldconfigVersion + ".yml---->");
+            this.getLogger().log(Level.INFO, "<----Generating new config.yml for version:"+configVersion+"----->");
             saveDefaultConfig();
             this.getLogger().log(Level.INFO, "A new config file has been created please make adjustments as needed.");
         }

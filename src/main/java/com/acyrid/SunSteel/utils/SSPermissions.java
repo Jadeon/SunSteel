@@ -1,5 +1,5 @@
 package com.acyrid.SunSteel.utils;
-
+//Permissions Layer
 import org.bukkit.entity.Player;
 public class SSPermissions{
 

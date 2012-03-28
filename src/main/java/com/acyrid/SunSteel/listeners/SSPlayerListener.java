@@ -1,7 +1,6 @@
 package com.acyrid.SunSteel.listeners;
 
 import com.acyrid.SunSteel.SunSteel;
-import com.acyrid.SunSteel.utils.SSConfig;
 import com.acyrid.SunSteel.utils.SSMechanics;
 import org.bukkit.Material;
 import org.bukkit.block.Block;

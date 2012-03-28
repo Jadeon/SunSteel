@@ -6,9 +6,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.logging.Level;
-
-
 public class SSMechanics {
 
     public static SunSteel plugin;

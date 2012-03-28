@@ -6,7 +6,7 @@
 
     <groupId>com.acyrid.sunsteel</groupId>
     <artifactId>SunSteel</artifactId>
-    <version>1.02e</version>
+    <version>1.02f</version>
     <name>SunSteel</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

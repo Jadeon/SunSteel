@@ -11,9 +11,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.LinkedList;
-import java.util.List;
-
 public class SSBlockListener implements Listener {
 
     private SunSteel plugin;

@@ -2,7 +2,6 @@ package com.acyrid.SunSteel.listeners;
 
 import com.acyrid.SunSteel.SunSteel;
 import com.acyrid.SunSteel.utils.SSMechanics;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
