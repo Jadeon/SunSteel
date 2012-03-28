@@ -21,6 +21,7 @@ public class SSConfig {
     public static final String fallChance = "success_chances.fall";
     public static final String axeWeapon = "toggle_option.axe_as_weapon";
     public static final String Use_NoCheat= "toggle_option.anticheats_installed";
+    public static final String configCheck="config_version.version";
     public static final String debugMode = "debug_mode.option";
 
 }

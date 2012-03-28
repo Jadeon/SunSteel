@@ -1,9 +1,15 @@
-#congif.yml
+#############################################
+# DO NOT ALTER THE VERSION OR YOUR CONFIG   #
+# WILL BE ERASED UPON SERVER RESTART        #
+#############################################
+config_version:
+    version: 1.02e
 ####################################################################
 #list of item id's for respective items and their resulting effects#
 #  - helm|chest|legs|boots can only only contain armor item id's   #
 #  - sword|shovel|pick|axe can contain any item id as they are     #
 #    considered when they are in your hand                         #
+#  -DO NOT SET water_walk_block to the same id as lava_walk_block  #
 ####################################################################
 item_ids:
     sword: 283
@@ -15,7 +21,7 @@ item_ids:
     legs: 316
     boots: 317
     water_walk_block: 20
-    lava_walk_block: 20
+    lava_walk_block: 49
 ############################################################
 # Enter a value in seconds that you would like the burning #
 # effect to last.                                          #

@@ -156,6 +156,4 @@ public class SSMechanics {
         id=plugin.getConfig().getInt(SSConfig.waterwalkID);
         return id;
     }
-    
-
 }
