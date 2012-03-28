@@ -27,8 +27,8 @@ item_ids:
 # effect to last.                                          #
 ############################################################
 tick_durations:
-    fireDuration: 2
-    riposteDuration: 2
+    fireDuration: 4
+    riposteDuration: 4
 #############################################
 # These control the likelihood of a "proc"  #
 # occurring on a successful hit/break event #
@@ -44,5 +44,5 @@ success_chances:
 #############################################
 toggle_option:
     axe_as_weapon: true
-    anticheats_installed: true
+    anticheats_installed: false
 

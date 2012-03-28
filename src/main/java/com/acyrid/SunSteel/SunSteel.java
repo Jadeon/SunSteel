@@ -18,28 +18,35 @@ public class SunSteel extends JavaPlugin{
     private SSDamageListener damageListener = new SSDamageListener(this);
     private SSBlockListener blockListener = new SSBlockListener(this);
     private SSEntityListener entityListener = new SSEntityListener(this);
+    private String configVersion = "1.02e";
+    private String oldconfigVersion = "1.02d";
 
     public void onDisable(){
         this.getLogger().log(Level.INFO, "is Disabled!");
     }                                                    
     public void onEnable(){
-        load();
+        if(!new File(this.getDataFolder(), "config.yml").exists()){
+            saveDefaultConfig();
+        }else if(configVersion !=this.getConfig().getString(SSConfig.configCheck)){
+            File file = new File(this.getDataFolder()+File.separator+"config.yml");
+            this.getLogger().log(Level.INFO, "-----Config.yml is not up-to-date for this version-----");
+            file.renameTo(new File(this.getDataFolder()+File.separator + "OLD_config_" + oldconfigVersion + ".yml"));
+            
+            this.getLogger().log(Level.INFO, "-----Renaming your Config to OLD_config_" + oldconfigVersion + ".yml-----");
+            this.getLogger().log(Level.INFO, "-----Generating new config.yml for version:"+configVersion+"------");
+            saveDefaultConfig();
+            this.getLogger().log(Level.INFO, "A new config file has been created please make adjustments as needed.");
+        }
         getConfig();
         this.registerEvents();
         SSMechanics.init(this);
         this.getLogger().log(Level.INFO, "is now enabled with more solar flares then ever!");
         if(!SSMechanics.getNoCheatInstalled()){
-        this.getLogger().log(Level.INFO, "Based on the config you do not have Essentials Anti-Cheat, or NoCheat installed.");
-        }else{this.getLogger().log(Level.INFO, "Based on the config you have Essentials Anti-Cheat, or NoCheat installed. Play-Nice mode ENFORCED.");}
+        this.getLogger().log(Level.INFO, "No Anti-Cheats set in config, Play-Nice mode inactive.");
+        }else{this.getLogger().log(Level.INFO, "Anti-Cheat settings detected. Play-Nice mode ENFORCED.");}
         getConfig().getKeys(true);
     }
-    private void load(){
-        if(!new File(this.getDataFolder(), "config.yml").exists()){
-            saveDefaultConfig();
-        }else if(this.getDescription().getVersion()!=this.getConfig().getString(SSConfig.configCheck)){
-             saveDefaultConfig();
-        }
-    }
+
     private void registerEvents() {
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(this.playerListener, this);

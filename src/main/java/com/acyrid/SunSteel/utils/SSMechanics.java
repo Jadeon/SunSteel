@@ -147,7 +147,7 @@ public class SSMechanics {
     public static boolean getNoCheatInstalled(){return plugin.getConfig().getBoolean(SSConfig.Use_NoCheat);}
 
     public static int getLavaWalkBlock(){
-        int id=20;
+        int id=49;
         id=plugin.getConfig().getInt(SSConfig.lavawalkID);
         return id;
     }
