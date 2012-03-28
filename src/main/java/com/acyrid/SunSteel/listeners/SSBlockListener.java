@@ -25,7 +25,37 @@ public class SSBlockListener implements Listener {
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event){
         Player player = event.getPlayer();
-        if (!SSMechanics.smeltChance()) {
+        if(SSMechanics.smeltChance()){
+            if(SSMechanics.hasSSPick(player) && SSPermissions.allowedPick(player)){
+                if ((event.getBlock().getType() == Material.STONE || event.getBlock().getType() == Material.COBBLESTONE))
+                {
+                    smeltBlock(event, 1);
+                }else if ((event.getBlock().getType() == Material.IRON_ORE)){
+                    smeltBlock(event, 265);
+                }else if ((event.getBlock().getType() == Material.GOLD_ORE)){
+                    smeltBlock(event, 266);
+                }
+            }else if(SSMechanics.hasSSShovel(player) && SSPermissions.allowedShovel(player)){
+                if ((event.getBlock().getType() == Material.SAND)){
+                    smeltBlock(event, 20);
+                }else if ((event.getBlock().getType() == Material.CLAY)){
+                    smeltBlock(event, 45);
+                }
+            }else if (SSMechanics.hasSSAxe(player) && SSPermissions.allowedAxe(player)){
+                if(event.getBlock().getType() == Material.LOG){
+                    smeltBlock(event, 263);
+                }
+            }
+
+        }
+    }
+
+    public void smeltBlock(BlockBreakEvent event, int x){
+        event.setCancelled(true);
+        Location blLocation = new Location(event.getBlock().getWorld(), event.getBlock().getX(), event.getBlock().getY(), event.getBlock().getZ(), 0.0F, 0.0F);;
+        event.getBlock().getWorld().dropItem(blLocation, new ItemStack(x, 1));
+        event.getBlock().setType(Material.AIR);
+        /*if (!SSMechanics.smeltChance()) {
             return;
         }
         switch (event.getBlock().getType()) {
@@ -69,7 +99,7 @@ public class SSBlockListener implements Listener {
                 if (!SSMechanics.hasSSShovel(player) || !SSPermissions.allowedShovel(player)) {
                     return;
                 }
-                smeltBlock(event, Material.CLAY_BALL, Material.CLAY_BRICK);
+                smeltBlock(event, Material.CLAY_BALL, Material.BRICK);
                 break;
             default:
                 return;
@@ -78,19 +108,21 @@ public class SSBlockListener implements Listener {
 
     public void smeltBlock(BlockBreakEvent event, Material oldMaterial, Material newMaterial) {
         smeltBlock(event, oldMaterial, newMaterial, 1);
+
     }
-    
+
     public void smeltBlock(BlockBreakEvent event, Material oldMaterial, Material newMaterial, int requiredOldForNew) {
-        List<ItemStack> oldItems = new LinkedList<ItemStack>();
-        List<ItemStack> newItems = new LinkedList<ItemStack>();
-        for (ItemStack item : event.getDrops()) {
-            if (item.getType() == oldMaterial) {
-                oldItems.add(item);
-                int newAmount = item.getAmount() / requiredOldForNew;
-                newItems.add(new ItemStack(newMaterial, newAmount));
-            }
+    List<ItemStack> oldItems = new LinkedList<ItemStack>();
+    List<ItemStack> newItems = new LinkedList<ItemStack>();
+    for (ItemStack item : event.getDrops()) {
+        if (item.getType() == oldMaterial) {
+            oldItems.add(item);
+            int newAmount = item.getAmount() / requiredOldForNew;
+            newItems.add(new ItemStack(newMaterial, newAmount));
         }
-        event.getDrops().removeAll(oldItems);
-        event.getDrops().addAll(newItems);
     }
+    event.getDrops().removeAll(oldItems);
+    event.getDrops().addAll(newItems);*/
+        
+     }
 }

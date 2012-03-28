@@ -36,7 +36,7 @@ success_chances:
 #############################################
 # Togglable options as true or false        #
 #############################################
-toggle_options:
+toggle_option:
     axe_as_weapon: true
-    NoCheat_is_installed: false             #This does nothing at the moment.
+    anticheats_installed: true
 

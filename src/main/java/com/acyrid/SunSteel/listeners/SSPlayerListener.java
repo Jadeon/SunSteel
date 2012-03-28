@@ -16,82 +16,77 @@ public class SSPlayerListener implements Listener{
     public SSPlayerListener(SunSteel plugin) {
     }
     private int lastBlock;
-    private Map<Player, Set<Block>> revertSet = new HashMap<Player,Set<Block>>();
+    private Map<Player, Set<Block>> revertMap = new HashMap<Player,Set<Block>>();
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event){
         Player player = event.getPlayer();
+        Set<Block> revertSet = revertMap.get(player);
+        if (revertSet == null) {
+            revertSet = new LinkedHashSet<Block>();
+            revertMap.put(player, revertSet);
+        }
         if(SSMechanics.hasSSHoverWater(player)||SSMechanics.hasSSHoverLava(player)){
-            if(!revertSet.containsKey(player)){
-                revertSet.put(player,new HashSet<Block>());
-            }
             Block toBlockLoc = event.getTo().getBlock();
             Block fromBlockLoc = event.getFrom().getBlock();
-                if (!fromBlockLoc.equals(toBlockLoc)){
-                    final int range = 1;
-                    for (int dx = -range; dx <=range; dx++) {
-                        for (int dz = -range; dz <=range; dz++) {
-                            Block block = toBlockLoc.getRelative(dx, -1, dz);
-                            if(!SSMechanics.getNoCheatInstalled()){
-                                if(((block.getType() == Material.WATER || block.getType() == Material.STATIONARY_WATER))&&
-                                        SSMechanics.hasSSHoverWater(player)){
-                                    if(Material.getMaterial(SSMechanics.getWaterWalkBlock()) != null){
-                                        player.sendBlockChange(block.getLocation() ,Material.getMaterial(SSMechanics.getWaterWalkBlock()),(byte)0 );
-                                        revertSet.get(player).add(block);
-                                        revertCheck(player, Material.WATER);
-                                        lastBlock = 1;
-                                    }
-                                }else if(((block.getType() == Material.LAVA || block.getType() == Material.STATIONARY_LAVA))&&
-                                        SSMechanics.hasSSHoverLava(player)){
-                                    if(Material.getMaterial(SSMechanics.getLavaWalkBlock()) != null){
-                                        player.sendBlockChange(block.getLocation() ,Material.getMaterial(SSMechanics.getLavaWalkBlock()),(byte)0 );
-                                        revertSet.get(player).add(block);
-                                        revertCheck(player, Material.LAVA);
-                                        lastBlock = 2;
-                                    }
-                                }
-                            }else if(SSMechanics.getNoCheatInstalled()){
-                                if(((block.getType() == Material.WATER || block.getType() == Material.STATIONARY_WATER))&&
-                                        SSMechanics.hasSSHoverWater(player)){
-                                    if(Material.getMaterial(SSMechanics.getWaterWalkBlock()) != null){
+            if (!fromBlockLoc.equals(toBlockLoc)){
+                final int range = 1;
+                for (int dx = -range; dx <=range; dx++) {
+                    for (int dz = -range; dz <=range; dz++) {
+                        Block block = toBlockLoc.getRelative(dx, -1, dz);
+                        if(((block.getType() == Material.WATER || block.getType() == Material.STATIONARY_WATER))&&
+                                SSMechanics.hasSSHoverWater(player)){
+                            if(Material.getMaterial(SSMechanics.getWaterWalkBlock()) != null){
+                                if(SSMechanics.getNoCheatInstalled()){
+                                    if(SSMechanics.getLavaWalkBlock()!=SSMechanics.getWaterWalkBlock()){
                                         block.setTypeId(SSMechanics.getWaterWalkBlock());
-                                        revertSet.get(player).add(block);
-                                        revertCheck(player, Material.WATER);
-                                        lastBlock = 1;
+                                    }else{
+                                        block.setType(Material.CLAY);
                                     }
-                                }else if(((block.getType() == Material.LAVA || block.getType() == Material.STATIONARY_LAVA))&&
-                                        SSMechanics.hasSSHoverLava(player)){
-                                    if(Material.getMaterial(SSMechanics.getLavaWalkBlock()) != null){
-                                        block.setTypeId(SSMechanics.getLavaWalkBlock());
-                                        revertSet.get(player).add(block);
-                                        revertCheck(player, Material.LAVA);
-                                        lastBlock = 2;
-                                    }
+                                }else{
+                                        player.sendBlockChange(block.getLocation() ,Material.getMaterial(SSMechanics.getWaterWalkBlock()),(byte)0 );
                                 }
+                                revertSet.add(block);
+                            }
+                        }else if(((block.getType() == Material.LAVA || block.getType() == Material.STATIONARY_LAVA))&& SSMechanics.hasSSHoverLava(player)){
+                            if(Material.getMaterial(SSMechanics.getLavaWalkBlock()) != null){
+                                if(SSMechanics.getNoCheatInstalled()){
+                                    block.setTypeId(SSMechanics.getLavaWalkBlock());
+                                }else{
+                                    player.sendBlockChange(block.getLocation() ,Material.getMaterial(SSMechanics.getLavaWalkBlock()),(byte)0 );
+                                }
+                                revertSet.add(block);
                             }
                         }
                     }
                 }
-            if(lastBlock == 1){
-                revertCheck(player, Material.WATER);
-            }else if(lastBlock ==2){
-                revertCheck(player, Material.LAVA);
             }
-        }   
-    } 
+        }
+        if(!revertSet.isEmpty()){
+            revertCheck(player);
+        }else if(!player.isOnline() || player.isDead()){
+            if(!revertSet.isEmpty()&& revertSet.iterator().next().getType()==Material.WATER){
+                revertCheck(player);
+            }
+        }
+    }
     
-    public void revertCheck(Player player, Material material){
+    public void revertCheck(Player player){
         Block playerBlock = player.getLocation().getBlock();
-        Iterator<Block> iterator = revertSet.get(player).iterator();
+        Iterator<Block> iterator = revertMap.get(player).iterator();
         while(iterator.hasNext()){
             Block nextBlock = iterator.next();
             int xCheck = abs(nextBlock.getX()) - abs(playerBlock.getX());
             int zCheck = abs(nextBlock.getZ()) - abs(playerBlock.getZ());
             if((abs(xCheck) > 3 || abs(zCheck) >3)){
                 if(!SSMechanics.getNoCheatInstalled()){
-                    player.sendBlockChange(nextBlock.getLocation(), material,(byte)0 );
+                    player.sendBlockChange(nextBlock.getLocation(), nextBlock.getType(),(byte)0 );
                     iterator.remove();
-                }else if(SSMechanics.getNoCheatInstalled()){
-                    nextBlock.setType(material);
+                }else{
+                    if(nextBlock.getTypeId()== SSMechanics.getLavaWalkBlock()){
+                        nextBlock.setType(Material.LAVA);                        
+                    }else if(nextBlock.getTypeId()== SSMechanics.getWaterWalkBlock() || nextBlock.getType()== Material.CLAY){
+                        nextBlock.setType(Material.WATER);
+                    }
                     iterator.remove();
                 }
             }
