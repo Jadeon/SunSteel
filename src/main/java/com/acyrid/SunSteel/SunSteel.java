@@ -18,8 +18,8 @@ public class SunSteel extends JavaPlugin{
     private SSDamageListener damageListener = new SSDamageListener(this);
     private SSBlockListener blockListener = new SSBlockListener(this);
     private SSEntityListener entityListener = new SSEntityListener(this);
-    private String configVersion = "1.02f";
-    private String oldconfigVersion = "1.02e";
+    private String configVersion = "1.02h";
+    private String oldconfigVersion = "1.02f";
 
     public void onDisable(){
         this.getLogger().log(Level.INFO, "is Disabled!");
