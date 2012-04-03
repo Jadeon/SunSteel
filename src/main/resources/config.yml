@@ -8,7 +8,7 @@ config_version:
 #list of item id's for respective items and their resulting effects#
 #  - helm|chest|legs|boots can only only contain armor item id's   #
 #  - sword|shovel|pick|axe can contain any item id as they are     #
-#    considered when they are in your hand.                         #
+#    considered when they are in your hand.                        #
 #  -DO NOT SET water_walk_block to the same id as lava_walk_block  #
 ####################################################################
 item_ids:
@@ -45,4 +45,17 @@ success_chances:
 toggle_option:
     axe_as_weapon: true
     anticheats_installed: false
+####################################################################
+#~~~~WARNING~~~~~~WARNING~~~~~~WARNING~~~~~~WARNING~~~~~WARNING~~~~#
+#  It is best to leave anticheats_installed set to false, due to   #
+#  the fact that it will actually change source blocks allowing    #
+#  for exploitation of block farming of the hover block you set    #
+#  furthermore, if your server has allow flight set to false, you  #
+#  can safely give your users the nocheat or anti cheat flight     #
+#  bypass permissions and use the plugin as it was intended, your  #
+#  own server will then block the flying portion without nocheat   #
+#  or anticheat blocking  SunSteel. YOU HAVE BEEN WARNED........   #
+#~~~~WARNING~~~~~~WARNING~~~~~~WARNING~~~~~~WARNING~~~~~WARNING~~~~#
+####################################################################
+
 
