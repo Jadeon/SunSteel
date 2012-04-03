@@ -3,7 +3,7 @@
 # WILL BE ERASED UPON SERVER RESTART        #
 #############################################
 config_version:
-    version: 1.02f
+    version: 1.02h
 ####################################################################
 #list of item id's for respective items and their resulting effects#
 #  - helm|chest|legs|boots can only only contain armor item id's   #
