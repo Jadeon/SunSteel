@@ -5,6 +5,7 @@ version: 1.02f
 permissions:
     sunsteel.*:
         description: Gives access to all sunsteel effects
+        default: false
         children:
             sunsteel.armor.*: true
             sunsteel.tools.*: true
@@ -18,14 +19,19 @@ permissions:
             sunsteel.armor.boots: true
     sunsteel.armor.helm:
         description: Allows usage of the helmet effects Liquid Breathing(Water & Lava), Lava Damage Resistance +1, Nullifies Flames
+        default: false
     sunsteel.armor.legs:
         description: Allows usage of the leggings effects Safe Fall(No fall damage), Lava Damage Resistance +1, Nullifies Flames
+        default: false
     sunsteel.armor.chest:
         description: Allows usage of the helmet effects Flame Riposte, Lava Damage Resistance  +2, Nullifies Flames
+        default: false
     sunsteel.armor.boots:
         description: Allows usage of the boots effects This is ****required**** to give someone either Lava Walking or Water Walking
+        default: false
     sunsteel.special.*:
         description: Gives access to all sunsteel special effects
+        default: false
         children:
             sunsteel.special.lavafloat: true
             sunsteel.special.waterfloat: true
@@ -35,18 +41,25 @@ permissions:
             sunsteel.special.safefall: true
     sunsteel.special.lavafloat:
         description: Allows usage of the boots effect Lava Walking
+        default: false
     sunsteel.special.waterfloat:
         description: Allows usage of the boots effect Water Walking
+        default: false
     sunsteel.special.waterbreath:
         description: Allows usage of the helmets effect Water Breathing
+        default: false
     sunsteel.special.fireresist:
         description: Allows usage of the Lava Resistance and Flame Nullification effects on select armors
+        default: false
     sunsteel.special.fireriposte:
         description: Allows usage of the Flame Riposte effect on chests.
+        default: false
     sunsteel.special.safefall:
         description: Allows usage of the Safe Fall effect on legs.
+        default: false
     sunsteel.tools.*:
         description: Gives access to all sunsteel tool effects
+        default: false
         children:
            sunsteel.tools.sword: true
            sunsteel.tools.axe: true
@@ -54,12 +67,16 @@ permissions:
            sunsteel.tools.shovel: true
     sunsteel.tools.sword:
         description: Allows usage of the sword effect Sword of Flames
+        default: false
     sunsteel.tools.axe:
         description: Allows usage of the axe effect Inferno Axe
+        default: false
     sunsteel.tools.pick:
         description: Allows usage of the pick effect Molten Pick
+        default: false
     sunsteel.tools.shovel:
         description: Allows usage of the shovel effect Solar Spade
+        default: false
 
 
 
