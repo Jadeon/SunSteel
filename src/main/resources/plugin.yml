@@ -12,6 +12,7 @@ permissions:
             sunsteel.special.*: true
     sunsteel.armor.*:
         description: Gives access to all sunsteel armor effects
+        default: false
         children:
             sunsteel.armor.helm: true
             sunsteel.armor.legs: true
