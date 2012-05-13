@@ -1,6 +1,5 @@
 package com.acyrid.SunSteel.listeners;
 
-import com.acyrid.SunSteel.SunSteel;
 import com.acyrid.SunSteel.utils.SSMechanics;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -12,8 +11,7 @@ import java.util.*;
 import static java.lang.Math.abs;
 
 public class SSPlayerListener implements Listener{
-    public SSPlayerListener(SunSteel plugin) {
-    }
+
     private Map<Player, Set<Block>> revertMap = new HashMap<Player,Set<Block>>();
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event){

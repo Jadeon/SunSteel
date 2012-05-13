@@ -2,7 +2,6 @@ package com.acyrid.SunSteel.utils;
 
 
 import com.acyrid.SunSteel.SunSteel;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 

@@ -1,6 +1,5 @@
 package com.acyrid.SunSteel.listeners;
 
-import com.acyrid.SunSteel.SunSteel;
 import com.acyrid.SunSteel.utils.SSMechanics;
 import org.bukkit.Material;
 import org.bukkit.entity.*;
@@ -14,14 +13,11 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.*;
-import java.util.logging.Level;
 
 public class SSDamageListener implements Listener {
 
     protected static java.util.Vector<Animals> cookedAnimals = new java.util.Vector<Animals>(24);
 
-    public SSDamageListener(SunSteel plugin) {
-    }
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onEntityDeath(EntityDeathEvent event){
         EntityDeathEvent entityDeathEvent = (EntityDeathEvent) event;
@@ -53,10 +49,8 @@ public class SSDamageListener implements Listener {
     }
 
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onEntityDamage(EntityDamageEvent event) {
-        if(event.isCancelled())
-            return;
         if(event instanceof EntityDamageByEntityEvent) {
             EntityDamageByEntityEvent entityDamageByEntityEvent = (EntityDamageByEntityEvent) event;
             Entity aggressor = entityDamageByEntityEvent.getDamager();

@@ -3,21 +3,16 @@ package com.acyrid.SunSteel;
 import com.acyrid.SunSteel.listeners.*;
 import com.acyrid.SunSteel.utils.SSConfig;
 import com.acyrid.SunSteel.utils.SSMechanics;
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 import java.util.logging.Level;
 
-import static java.nio.file.Files.delete;
-import static java.nio.file.Files.deleteIfExists;
-
 public class SunSteel extends JavaPlugin{
 
-    private SSPlayerListener playerListener = new SSPlayerListener(this);
-    private SSDamageListener damageListener = new SSDamageListener(this);
-    private SSBlockListener blockListener = new SSBlockListener(this);
-    private SSEntityListener entityListener = new SSEntityListener(this);
+    private SSPlayerListener playerListener = new SSPlayerListener();
+    private SSDamageListener damageListener = new SSDamageListener();
+    private SSBlockListener blockListener = new SSBlockListener();
     private String configVersion = "1.02h";
     private String oldconfigVersion = "1.02f";
 
@@ -52,7 +47,6 @@ public class SunSteel extends JavaPlugin{
         pm.registerEvents(this.playerListener, this);
         pm.registerEvents(this.blockListener, this);
         pm.registerEvents(this.damageListener, this);
-        pm.registerEvents(this.entityListener, this);
 
     }
 
