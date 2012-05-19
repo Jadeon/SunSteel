@@ -80,7 +80,6 @@ public class SSDamageListener implements Listener {
                 Player player = (Player) event.getEntity();
                 if ((SSMechanics.hasSSFireResist(player)) ){
                     if(SSMechanics.hasSSArmorANY(player) && SSMechanics.resistFireChance()) {
-                        event.setCancelled(true);
                         player.setFireTicks(0);
                     }
                 }
@@ -91,9 +90,7 @@ public class SSDamageListener implements Listener {
             if(event.getEntity() instanceof Player){
                 Player player = (Player) event.getEntity();
                 if(SSMechanics.hasSSFireResist(player)){
-                    if(SSMechanics.hasSSArmor(player)){
-                        event.setCancelled(true);
-                    }else if(SSMechanics.hasSSChest(player)&&
+                    if(SSMechanics.hasSSChest(player)&&
                             (SSMechanics.hasSSHelm(player)||SSMechanics.hasSSLegs(player))){
                         event.setDamage(1);
                     }else if(SSMechanics.hasSSChest(player)){
@@ -120,8 +117,6 @@ public class SSDamageListener implements Listener {
             Player player = (Player) event.getEntity();
             if(SSMechanics.hasSSWaterBreath(player)){
                 player.setRemainingAir(player.getMaximumAir());
-                event.setCancelled(true);
-
             }
         }
     }

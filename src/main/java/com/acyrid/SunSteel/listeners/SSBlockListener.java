@@ -42,7 +42,6 @@ public class SSBlockListener implements Listener {
     }
 
     public void smeltBlock(BlockBreakEvent event, int x){
-        event.setCancelled(true);
         Location blLocation = new Location(event.getBlock().getWorld(), event.getBlock().getX(), event.getBlock().getY(), event.getBlock().getZ(), 0.0F, 0.0F);;
         event.getBlock().getWorld().dropItem(blLocation, new ItemStack(x, 1));
         event.getBlock().setType(Material.AIR);
