@@ -80,7 +80,6 @@ public class SSDamageListener implements Listener {
                 Player player = (Player) event.getEntity();
                 if ((SSMechanics.hasSSFireResist(player)) ){
                     if(SSMechanics.hasSSArmorANY(player) && SSMechanics.resistFireChance()) {
-                    	event.setCancelled(true);
                         player.setFireTicks(0);
                     }
                 }
