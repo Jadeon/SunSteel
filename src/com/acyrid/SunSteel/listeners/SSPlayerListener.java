@@ -11,7 +11,6 @@ import java.util.*;
 import static java.lang.Math.abs;
 
 public class SSPlayerListener implements Listener{
-
     private Map<Player, Set<Block>> revertMap = new HashMap<Player,Set<Block>>();
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event){
